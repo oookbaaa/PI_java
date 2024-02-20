@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="parentd" prefHeight="523.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.Dashboard">
+   <children>
+      <BorderPane layoutY="-0.8" prefHeight="400.0" prefWidth="699.0" stylesheets="/Style.css" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-1.0">
+         <top>
+            <AnchorPane prefHeight="66.0" prefWidth="818.0" style="-fx-background-color: WHITE;" stylesheets="@Style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane layoutY="0.8" prefHeight="26.0" prefWidth="806.0" style="-fx-background-color: #009471;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+                     <children>
+                        <ImageView fx:id="Exit" fitHeight="22.0" fitWidth="22.0" layoutX="783.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/fermer.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="maximizeIcon" fitHeight="18.0" fitWidth="22.0" layoutX="764.0" layoutY="4.0" onMouseClicked="#toggleMaximizeWindow" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/maximiser.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="reduceIcon" fitHeight="22.0" fitWidth="16.0" layoutX="739.0" layoutY="5.0" onMouseClicked="#reduceWindow" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/reduire-la-fenetre.png" />
+                           </image>
+                        </ImageView>
+                     </children></Pane>
+                  <HBox layoutX="176.8" layoutY="-7.0" prefHeight="42.0" prefWidth="629.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="177.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                     <children>
+                        <JFXButton prefHeight="42.0" prefWidth="154.0" styleClass="menuItem" stylesheets="@Style.css" text="Dashboard">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/dash1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton prefHeight="42.0" prefWidth="164.0" styleClass="menuItem" stylesheets="@Style.css" text="settings">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/data1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton prefHeight="42.0" prefWidth="162.0" styleClass="menuItem" stylesheets="@Style.css" text="Show users">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/add1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton prefHeight="42.0" prefWidth="162.0" styleClass="menuItem" stylesheets="@Style.css" text="Report">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/report1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <Label fx:id="Menu" layoutX="14.0" layoutY="37.0" text="MENU" textFill="#b7b7b7">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/menu1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="MenuClose" layoutX="14.0" layoutY="37.0" text="MENU" textFill="#b7b7b7">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/menu1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane fx:id="slider" prefHeight="362.0" prefWidth="176.0" style="-fx-background-color: #009471;" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutX="28.0" layoutY="67.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
+                     <children>
+                        <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="172.0" styleClass="sidebarItem" stylesheets="@Style.css" text="Dashboard" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/dash.png" />
+                                 </image></ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="showlistuser" alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="172.0" styleClass="sidebarItem" stylesheets="@Style.css" text="Show users" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/add.png" />
+                                 </image></ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="172.0" styleClass="sidebarItem" stylesheets="@Style.css" text="Report" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/report.png" />
+                                 </image></ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="172.0" styleClass="sidebarItem" stylesheets="@Style.css" text="Settings" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/data.png" />
+                                 </image></ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="tableView" layoutX="25.0" layoutY="28.0" prefHeight="227.0" prefWidth="580.0">
+                    <columns>
+                      <TableColumn fx:id="idc" prefWidth="48.0" text="ID" />
+                      <TableColumn fx:id="nomc" prefWidth="99.20008850097656" text="NAME" />
+                        <TableColumn fx:id="telc" prefWidth="114.4000244140625" text="PHONE" />
+                        <TableColumn fx:id="emailc" prefWidth="119.20001220703125" text="EMAIL" />
+                        <TableColumn fx:id="adressec" prefWidth="107.2000732421875" text="ADRESS" />
+                        <TableColumn fx:id="rolec" prefWidth="88.0" text="ROLE" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
