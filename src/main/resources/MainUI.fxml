@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709.0" prefWidth="800.0" styleClass="parent" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.SignIn">
+<AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="751.0" prefWidth="800.0" styleClass="parent" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.SignIn">
     <children>
-        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="400.0" styleClass="sidebar" stylesheets="@stylesheet.css">
+        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="400.0" styleClass="sidebar" stylesheets="@stylesheet.css">
             <children>
                 <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" smooth="false">
                     <image>
@@ -33,14 +33,14 @@
                         <DropShadow />
                     </effect>
                 </Label>
-                <Label focusTraversable="false" layoutX="169.0" layoutY="304.0" text="E.V.H" textFill="WHITE">
+                <Label focusTraversable="false" layoutX="169.0" layoutY="304.0" text="Electric.Vehicul.Hubs" textFill="WHITE">
                     <font>
                         <Font name="Impact" size="24.0" />
                     </font>
                 </Label>
             </children>
         </VBox>
-        <Pane fx:id="parentpane" layoutX="400.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="400.0" style="-fx-background-color: #fff;" stylesheets="@stylesheet.css">
+        <Pane fx:id="parentpane" layoutX="400.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="400.0" style="-fx-background-color: #fff;" stylesheets="@stylesheet.css">
             <children>
                 <ImageView fitHeight="106.0" fitWidth="100.0" layoutX="54.0" layoutY="70.0" pickOnBounds="true" smooth="false">
                     <image>

@@ -7,12 +7,14 @@ public class User {
     private String mdp;
     private String role;
     private String adresse;
+    private Status status= Status.ACTIVE;
     private String photo;
+
 
     public User() {
 
     }
-    public User(int id, int tel, String nom, String email, String mdp, String role, String adresse, String photo) {
+    public User(int id, int tel, String nom, String email, String mdp, String role, String adresse, Status status, String photo) {
         this.id = id;
         this.tel = tel;
         this.nom = nom;
@@ -21,9 +23,10 @@ public class User {
         this.role = role;
         this.adresse = adresse;
         this.photo = photo;
+        this.status = status;
     }
 
-    public User(int tel, String nom, String email, String mdp, String role, String adresse, String photo) {
+    public User(int tel, String nom, String email, String mdp, String role, String adresse,Status status, String photo) {
         this.tel = tel;
         this.nom = nom;
         this.email = email;
@@ -33,7 +36,13 @@ public class User {
         this.photo = photo;
     }
 
+    public Status getStatus() {
+        return status;
+    }
 
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     public int getId() {
         return id;
@@ -109,6 +118,8 @@ public class User {
                 ", mdp='" + mdp + '\'' +
                 ", role='" + role + '\'' +
                 ", adresse='" + adresse + '\'' +
+                ", status='" + status + '\'' +
+                ", photo='" + photo + '\'' +
                 '}';
     }
 }

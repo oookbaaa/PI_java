@@ -24,7 +24,7 @@ public class Welcome {
     public void setUserName(String username) {
             welcomeLabel.setText("Welcome back," + username);
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(6), e -> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), e -> {
             try {
                 closeWelcomeWindow();
             } catch (IOException ex) {
@@ -56,7 +56,7 @@ public class Welcome {
                     homeStage.show();
                 } else {
                     System.out.println("User role: " + userRole);
-                    Parent root = FXMLLoader.load(getClass().getResource("/Dashboard.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("/Dash.fxml"));
                     Stage dashboardStage = new Stage();
                     dashboardStage.initStyle(StageStyle.UNDECORATED);
                     dashboardStage.setScene(new Scene(root));

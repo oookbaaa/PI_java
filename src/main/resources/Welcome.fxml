@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="welcome" prefHeight="519.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.Welcome">
+<AnchorPane fx:id="welcome" prefHeight="519.0" prefWidth="802.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.Welcome">
    <children>
-      <Label fx:id="welcomeLabel" layoutX="108.0" layoutY="97.0" prefHeight="330.0" prefWidth="574.0" stylesheets="@stylesheet.css" textAlignment="CENTER" textFill="#009471">
+      <ImageView fitHeight="519.0" fitWidth="517.0" layoutX="143.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/pdp.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="210.0" prefWidth="431.0" stylesheets="@stylesheet.css" textAlignment="CENTER" textFill="#3594e7" underline="true">
          <font>
-            <Font size="36.0" />
+            <Font name="Berlin Sans FB" size="36.0" />
          </font></Label>
    </children>
 </AnchorPane>

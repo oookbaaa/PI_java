@@ -1,6 +1,7 @@
 package tn.esprit.services;
 
 
+import tn.esprit.models.Status;
 import tn.esprit.models.User;
 import tn.esprit.utils.MyDatabase;
 
@@ -19,7 +20,7 @@ public class UserService implements IService <User>{
     @Override
     public void ajouter(User user) throws SQLException {
 
-        String req="INSERT INTO user (tel_user,nom_user,email_user,mdp_user,role_user,adresse_user,photo_user) VALUES ("+user.getTel()+",'"+user.getNom()+"','"+user.getEmail()+"','"+user.getMdp()+"','"+user.getRole()+"','"+user.getAdresse()+"','"+user.getPhoto()+"')";
+        String req="INSERT INTO user (tel_user,nom_user,email_user,mdp_user,role_user,adresse_user,status_user,photo_user) VALUES ("+user.getTel()+",'"+user.getNom()+"','"+user.getEmail()+"','"+user.getMdp()+"','"+user.getRole()+"','"+user.getAdresse()+"','"+user.getStatus()+"','"+user.getPhoto()+"')";
         Statement st = connection.createStatement();
         st.executeUpdate(req);
         System.out.println("Ajoutée");
@@ -27,7 +28,7 @@ public class UserService implements IService <User>{
 
     @Override
     public void modifier(User user) throws SQLException {
-        String req = "UPDATE user SET nom_user = ?, mdp_user = ?, role_user = ?, adresse_user = ? , photo_user = ? , email_user = ? , tel_user = ? WHERE id_user = ?";
+        String req = "UPDATE user SET nom_user = ?, mdp_user = ?, role_user = ?, adresse_user = ? , photo_user = ? , email_user = ? , tel_user = ?,status_user = ? WHERE id_user = ?";
         PreparedStatement ps = connection.prepareStatement(req);
         ps.setString(1, user.getNom());
         ps.setString(2, user.getMdp());
@@ -36,7 +37,8 @@ public class UserService implements IService <User>{
         ps.setString(5, user.getPhoto());
         ps.setString(6, user.getEmail());
         ps.setInt(7, user.getTel());
-        ps.setInt(8, user.getId());
+        ps.setString(8, user.getStatus().name());
+        ps.setInt(9, user.getId());
         ps.executeUpdate();
         System.out.println("Modifié");
     }
@@ -66,17 +68,20 @@ public class UserService implements IService <User>{
             user.setMdp(rs.getString("mdp_user"));
             user.setRole(rs.getString("role_user"));
             user.setAdresse(rs.getString("adresse_user"));
+            String statusString = rs.getString("status_user");
+                Status status = Status.fromString(statusString);
+                user.setStatus(status);
             user.setPhoto(rs.getString("photo_user"));
             users.add(user);
         }
         return users;
     }
 
-    // Method to authenticate a user based on username/email and password
+
     public User authenticateUser(String email, String mdp) {
 
 
-            // Prepare SQL statement to retrieve user information based on username/email and password
+
             String query = "SELECT * FROM user WHERE email_user = ? AND mdp_user = ?";
             try (PreparedStatement statement = connection.prepareStatement(query)) {
                 statement.setString(1, email);
@@ -84,7 +89,11 @@ public class UserService implements IService <User>{
 
                 try (ResultSet resultSet = statement.executeQuery()) {
                     if (resultSet.next()) {
-                        // User found, return a User object with user information
+                        String statusString = resultSet.getString(
+                                "status_user");
+                        // Convert the string to the Status enum
+                        Status status = Status.fromString(statusString);
+
                         return new User(
                                 resultSet.getInt("id_user"),
                                 resultSet.getInt("tel_user"),
@@ -93,7 +102,10 @@ public class UserService implements IService <User>{
                                 resultSet.getString("mdp_user"),
                                 resultSet.getString("role_user"),
                                 resultSet.getString("adresse_user"),
-                                resultSet.getString("photo_user")
+                                status,
+// Now you have the status as a string, you can convert it to the Status enum as needed
+
+                        resultSet.getString("photo_user")
 
                                 // Add other user properties as needed
                         );
@@ -101,18 +113,15 @@ public class UserService implements IService <User>{
                 }
             }
         catch (SQLException e) {
-            e.printStackTrace(); // Handle database errors appropriately
+            e.printStackTrace();
         }
-        // User not found or invalid credentials, return null
+
         return null;
     }
 
     public static User getCurrentUser() {
 
-        // Logic to retrieve the currently logged-in user
-        // This could involve retrieving the user from a session, database, or any other authentication mechanism
-        // For demonstration, let's return a hardcoded user
-        return new User(1,55420690, "okba", "okba@okba.tn", "123456","ADMIN","el ghazela",null);
+        return new User(1,55420690, "okba", "okba@okba.tn", "123456","ADMIN","el ghazela",Status.ACTIVE,null);
 
     }
 
@@ -127,19 +136,19 @@ public class UserService implements IService <User>{
         ResultSet resultSet = null;
 
         try {
-            // Get the database connection
+
 
             connection = MyDatabase.getInstance().getConnection();
 
-            // Prepare the SQL statement
+
             String sql = "SELECT COUNT(*) AS count FROM user WHERE email_user = ?";
             statement = connection.prepareStatement(sql);
             statement.setString(1, email);
 
-            // Execute the query
+
             resultSet = statement.executeQuery();
 
-            // Check if the email exists (count > 0)
+
             if (resultSet.next()) {
                 int count = resultSet.getInt("count");
                 return count > 0;
@@ -147,7 +156,7 @@ public class UserService implements IService <User>{
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // Close the database resources
+
             try {
                 if (resultSet != null) {
                     resultSet.close();

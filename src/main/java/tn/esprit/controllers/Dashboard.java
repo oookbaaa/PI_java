@@ -1,33 +1,47 @@
 package tn.esprit.controllers;
 
 
+import com.jfoenix.controls.JFXButton;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafx.util.Duration;
+import tn.esprit.models.Status;
 import tn.esprit.models.User;
 import tn.esprit.services.UserService;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Dashboard implements Initializable {
+    User user = null ;
+    String query = null ;
     private final UserService ps = new UserService();
+    @FXML
+    private TableColumn<User, String> statusc;
+    @FXML
+    private TableColumn<User, String> operationc;
 
     @FXML
     private TableColumn<User, String> adressec;
@@ -52,57 +66,13 @@ public class Dashboard implements Initializable {
     private double yOffset=0;
     @FXML
     private AnchorPane parentd;
-    @FXML
-    private Label Menu;
 
-    @FXML
-    private Label MenuClose;
-
-    @FXML
-    private ImageView Exit;
-
-    @FXML
-    private AnchorPane slider;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         makeStageDrageable();
-        Exit.setOnMouseClicked(event -> {
-            System.exit(0);
-        });
-        slider.setTranslateX(-176);
-        Menu.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
 
-            slide.setToX(0);
-            slide.play();
-
-            slider.setTranslateX(-176);
-
-            slide.setOnFinished((ActionEvent e)-> {
-                Menu.setVisible(false);
-                MenuClose.setVisible(true);
-            });
-        });
-
-        MenuClose .setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
-
-            slide.setToX(-176);
-            slide.play();
-
-            slider.setTranslateX(0);
-
-            slide.setOnFinished((ActionEvent e)-> {
-                Menu.setVisible(true);
-                MenuClose.setVisible(false);
-            });
-        });
         try {
             List<User> users = ps.recuperer();
             ObservableList<User> observableList = FXCollections.observableList(users);
@@ -115,6 +85,7 @@ public class Dashboard implements Initializable {
             rolec.setCellValueFactory(new PropertyValueFactory<>("role"));
             idc.setCellValueFactory(new PropertyValueFactory<>("id"));
             adressec.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+            statusc.setCellValueFactory(new PropertyValueFactory<>("status"));
 
 
         } catch (SQLException e) {
@@ -140,6 +111,7 @@ public class Dashboard implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 xOffset = event.getSceneX();
+
                 yOffset = event.getSceneY();
             }
 
@@ -164,15 +136,36 @@ public class Dashboard implements Initializable {
     @FXML
     private ImageView maximizeIcon;
 
-    @FXML
-    private void toggleMaximizeWindow(MouseEvent event) {
-        // Get the stage from any node in the scene
-        Stage stage = (Stage) maximizeIcon.getScene().getWindow();
-        // Toggle between maximized and restored (normal) state
-        if (stage.isMaximized()) {
-            stage.setMaximized(false); // Restore window to normal size
-        } else {
-            stage.setMaximized(true); // Maximize window
+
+
+
+
+
+
+
+
+
+
+    private void blockUser(User user) {
+        // Implement the logic to block the user
+        // This might involve updating the user's status in the database
+        // For example, if you have a UserService that handles user operations:
+        try {
+            UserService us = new UserService(); // Instantiate your UserService class
+            user.setStatus(Status.INACTIVE); // Assuming you have a setStatus method in your User class
+            us.modifier(user); // Update the user status in the database
+            // Optionally, you can update the UI to reflect the user's blocked status
+            // For example, if you have an ObservableList<User> backing your TableView:
+            ObservableList<User> userList = tableView.getItems();
+            userList.set(userList.indexOf(user), user); // Update the user in the list
+            // Notify the TableView to refresh the view
+            tableView.refresh();
+            // Optionally, display a success message
+            System.out.println("User " + user.getNom() + " blocked successfully.");
+        } catch (Exception e) {
+            // Handle any exceptions that occur during the blocking operation
+            System.err.println("Error blocking user: " + e.getMessage());
         }
     }
+
 }
