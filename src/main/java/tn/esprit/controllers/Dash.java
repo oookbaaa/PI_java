@@ -6,12 +6,18 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import tn.esprit.models.Role;
+import tn.esprit.models.User;
+import tn.esprit.services.UserService;
+import tn.esprit.utils.SessionManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,14 +29,16 @@ public class Dash implements Initializable {
     private double yOffset=0;
     @FXML
     private HBox root;
-
+    @FXML
+    private JFXButton btn_logout;
     @FXML
     private BorderPane borderpane;
     @FXML
     private ImageView reduceIcon;
     @FXML
     private JFXButton btn_list;
-
+    @FXML
+    private ImageView pdf;
     @FXML
     private JFXButton btn_report;
 
@@ -69,10 +77,26 @@ public class Dash implements Initializable {
         System.exit(0);
 
     }
-
+    public String sessionId;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         makeStageDrageable();
+
     }
+
+    @FXML
+    private void logout(ActionEvent event) throws IOException {
+
+        SessionManager.endSession();
+
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainUI.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) btn_logout.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }

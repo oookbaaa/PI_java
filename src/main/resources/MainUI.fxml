@@ -66,7 +66,7 @@
                         <Font name="Ebrima" size="14.0" />
                     </font>
                 </Label>
-                <JFXButton buttonType="RAISED" layoutX="54.0" layoutY="483.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#signIn" prefHeight="40.0" prefWidth="300.0" ripplerFill="#6aefce" styleClass="loginBtn" stylesheets="@stylesheet.css" text="Login">
+                <JFXButton buttonType="RAISED" layoutX="54.0" layoutY="483.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#signIn" onKeyPressed="#signIn" prefHeight="40.0" prefWidth="300.0" ripplerFill="#6aefce" styleClass="loginBtn" stylesheets="@stylesheet.css" text="Login">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -101,14 +101,9 @@
                   <Image url="@img/oeil.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="reduceIcon" fitHeight="22.0" fitWidth="16.0" layoutX="330.0" layoutY="6.0" onMouseClicked="#reduceWindow" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="reduceIcon" fitHeight="22.0" fitWidth="16.0" layoutX="353.0" layoutY="6.0" onMouseClicked="#reduceWindow" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/reduire-la-fenetre.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="maximizeIcon" fitHeight="18.0" fitWidth="22.0" layoutX="355.0" layoutY="5.0" onMouseClicked="#toggleMaximizeWindow" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@img/maximiser.png" />
                </image>
             </ImageView>
             <Label fx:id="LoginMessagelabel" layoutX="54.0" layoutY="413.0" prefHeight="29.0" prefWidth="300.0" stylesheets="@stylesheet.css" textFill="#d71313">

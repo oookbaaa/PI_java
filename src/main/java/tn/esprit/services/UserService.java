@@ -4,7 +4,10 @@ package tn.esprit.services;
 import tn.esprit.models.Status;
 import tn.esprit.models.User;
 import tn.esprit.utils.MyDatabase;
+import tn.esprit.utils.PasswordHasher;
+import tn.esprit.utils.SessionManager;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +15,7 @@ import java.util.List;
 public class UserService implements IService <User>{
 
     private Connection connection;
-
+public static boolean blocked=false;
     public UserService(){
         connection = MyDatabase.getInstance().getConnection();
     }
@@ -78,52 +81,109 @@ public class UserService implements IService <User>{
     }
 
 
-    public User authenticateUser(String email, String mdp) {
+//    public User authenticateUser(String email, String mdp) {
+//
+//
+//
+//            String query = "SELECT * FROM user WHERE email_user = ? AND mdp_user = ?";
+//            try (PreparedStatement statement = connection.prepareStatement(query)) {
+//                statement.setString(1, email);
+//                statement.setString(2, mdp);
+//
+//                try (ResultSet resultSet = statement.executeQuery()) {
+//                    if (resultSet.next()) {
+//                        String statusString = resultSet.getString(
+//                                "status_user");
+//                        // Convert the string to the Status enum
+//                        Status status = Status.fromString(statusString);
+//
+//                        return new User(
+//                                resultSet.getInt("id_user"),
+//                                resultSet.getInt("tel_user"),
+//                                resultSet.getString("nom_user"),
+//                                resultSet.getString("email_user"),
+//                                resultSet.getString("mdp_user"),
+//                                resultSet.getString("role_user"),
+//                                resultSet.getString("adresse_user"),
+//                                status,
+//// Now you have the status as a string, you can convert it to the Status enum as needed
+//
+//                        resultSet.getString("photo_user")
+//
+//                                // Add other user properties as needed
+//                        );
+//                    }
+//                }
+//            }
+//        catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return null;
+//    }
 
+    public String authenticateUser(String email, String password) {
+        try {
+            // Hash the password
+            String hashedPassword = PasswordHasher.hashPassword(password);
 
+            // Prepare the SQL query
+            String query = "SELECT * FROM user WHERE email_user = ?";
 
-            String query = "SELECT * FROM user WHERE email_user = ? AND mdp_user = ?";
+            // Create a PreparedStatement
             try (PreparedStatement statement = connection.prepareStatement(query)) {
                 statement.setString(1, email);
-                statement.setString(2, mdp);
 
+                // Execute the query
                 try (ResultSet resultSet = statement.executeQuery()) {
                     if (resultSet.next()) {
-                        String statusString = resultSet.getString(
-                                "status_user");
-                        // Convert the string to the Status enum
-                        Status status = Status.fromString(statusString);
+                        // Retrieve the hashed password and user status from the database
+                        String storedHashedPassword = resultSet.getString("mdp_user");
+                        Status userStatus = Status.fromString(resultSet.getString("status_user"));
 
-                        return new User(
-                                resultSet.getInt("id_user"),
-                                resultSet.getInt("tel_user"),
-                                resultSet.getString("nom_user"),
-                                resultSet.getString("email_user"),
-                                resultSet.getString("mdp_user"),
-                                resultSet.getString("role_user"),
-                                resultSet.getString("adresse_user"),
-                                status,
-// Now you have the status as a string, you can convert it to the Status enum as needed
-
-                        resultSet.getString("photo_user")
-
-                                // Add other user properties as needed
-                        );
+                        // Compare the hashed passwords and check user status
+                        if (hashedPassword.equals(storedHashedPassword)) {
+                            // Passwords match, check user status
+                            if (userStatus == Status.ACTIVE) {
+                                // User is active, create session
+                                User user = new User(
+                                        resultSet.getInt("id_user"),
+                                        resultSet.getInt("tel_user"),
+                                        resultSet.getString("nom_user"),
+                                        resultSet.getString("email_user"),
+                                        resultSet.getString("mdp_user"),
+                                        resultSet.getString("role_user"),
+                                        resultSet.getString("adresse_user"),
+                                        Status.fromString(resultSet.getString("status_user")),
+                                        resultSet.getString("photo_user")
+                                );
+                                return SessionManager.createSession(user);
+                            } else {
+                                blocked=true;
+                            }
+                        } else {
+                            // Passwords don't match
+                            System.out.println("Invalid email or password.");
+                        }
+                    } else {
+                        // No user found with the given email
+                        System.out.println("User not found.");
                     }
                 }
             }
-        catch (SQLException e) {
+        } catch (SQLException | NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
-    public static User getCurrentUser() {
+    public static User getUserFromSession(String sessionId) {
+        System.out.println(sessionId);
 
-        return new User(1,55420690, "okba", "okba@okba.tn", "123456","ADMIN","el ghazela",Status.ACTIVE,null);
-
+        return SessionManager.getSession(sessionId);
     }
+
+
 
 
 

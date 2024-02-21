@@ -9,7 +9,7 @@ public class User {
     private String adresse;
     private Status status= Status.ACTIVE;
     private String photo;
-
+    public static User Current_User;
 
     public User() {
 
@@ -35,7 +35,13 @@ public class User {
         this.adresse = adresse;
         this.photo = photo;
     }
+    public static User getCurrent_User() {
+        return Current_User;
+    }
 
+    public static void setCurrent_User(User Current_User) {
+        User.Current_User = Current_User;
+    }
     public Status getStatus() {
         return status;
     }

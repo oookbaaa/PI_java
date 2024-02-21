@@ -18,6 +18,8 @@ import javafx.scene.image.ImageView;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXTextField;
@@ -31,7 +33,7 @@ import tn.esprit.models.Role;
 import tn.esprit.models.Status;
 import tn.esprit.models.User;
 import tn.esprit.services.UserService;
-
+import tn.esprit.utils.PasswordHasher;
 
 public class RegistrationUI implements Initializable {
     private final UserService ps = new UserService();
@@ -40,55 +42,42 @@ public class RegistrationUI implements Initializable {
     private ObservableList<String> list = FXCollections.observableArrayList();
     @FXML
     private JFXTextField adressTF;
-
     @FXML
     private JFXButton choosefileBT;
-
     @FXML
     private JFXPasswordField cmdpPF;
-
     @FXML
     private JFXTextField emailTF;
-
     @FXML
     private JFXPasswordField mdpPF;
-
     @FXML
     private JFXTextField nomTF;
-
     @FXML
     private AnchorPane pane;
-
     @FXML
     private JFXComboBox<String> roleCB;
-
     @FXML
     private JFXTextField telTF;
-
     @FXML
     private ImageView reduceIcon;
-
     @FXML
     private Pane signUpPane;
-
     @FXML
     private Label registrationlabel;
-
     @FXML
     private Label emaillabel;
     @FXML
     private Label mdplabel;
-
     @FXML
     private Label phonelabel;
-
+    @FXML
+    private ImageView userPhoto;
 
     public Pane getParentPane() {
         return signUpPane;
     }
 
-    @FXML
-    private ImageView userPhoto;
+
 
     @FXML
     void chooseFile(ActionEvent event) {
@@ -103,11 +92,6 @@ public class RegistrationUI implements Initializable {
             userPhoto.setImage(image);
         }
     }
-
-
-
-
-
 
     private boolean validateFields() {
         String telPattern = "\\d{8}";
@@ -156,10 +140,11 @@ public class RegistrationUI implements Initializable {
             int tel = Integer.parseInt(telTF.getText());
             String address = adressTF.getText();
             Status status= Status.ACTIVE;
-            String mdp = mdpPF.getText();
+            String hashedPassword = PasswordHasher.hashPassword(mdpPF.getText());
             String role = roleCB.getValue();
 
-            User user = new User(tel, nom, email, mdp, role, address,status, photo);
+
+            User user = new User(tel, nom, email, hashedPassword, role, address,status, photo);
             ps.ajouter(user);
             clearFields();
             registrationlabel.setText("User added successfully");
@@ -167,57 +152,6 @@ public class RegistrationUI implements Initializable {
             registrationlabel.setText("An error occurred: " + e.getMessage());
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @FXML
     void AddUser(ActionEvent event) {
@@ -267,7 +201,6 @@ public class RegistrationUI implements Initializable {
         selectRole(list);
         roleCB.setItems(list);
 
-        // Add event listeners to input fields for live validation
         nomTF.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
         emailTF.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
         telTF.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -275,7 +208,6 @@ public class RegistrationUI implements Initializable {
                 telTF.setText(newValue.replaceAll("[^\\d]", ""));
             }
 
-            // Limiter la longueur du texte à 8 caractères
             if (telTF.getText().length() > 8) {
                 String limitedText = telTF.getText().substring(0, 8);
                 telTF.setText(limitedText);

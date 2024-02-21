@@ -13,16 +13,18 @@ import javafx.util.Duration;
 import tn.esprit.models.Role;
 import tn.esprit.models.User;
 import tn.esprit.services.UserService;
+import tn.esprit.utils.SessionManager;
 
 import java.io.IOException;
 
 public class Welcome {
     @FXML
     private Label welcomeLabel;
-
+    public String sessionId;
     // Method to set the username and display it in the label
     public void setUserName(String username) {
             welcomeLabel.setText("Welcome back," + username);
+         sessionId = SessionManager.getLastSessionId();
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), e -> {
             try {
@@ -43,7 +45,7 @@ public class Welcome {
 
         // Load and display the dashboard.fxml interface
         try {
-            User user = UserService.getCurrentUser(); // Assuming you have a method like this in your UserService class
+            User user = UserService.getUserFromSession(sessionId); // Assuming you have a method like this in your UserService class
             if (user != null) {
                 Role userRole = Role.valueOf(user.getRole());
                 String username = user.getNom(); // Assuming this is the username
@@ -97,12 +99,9 @@ public class Welcome {
                 stage.setScene(new Scene(root));
                 stage.show();
 
-                // Close the sign in window if needed
-                // Stage signInStage = (Stage) signInButton.getScene().getWindow();
-                // signInStage.close();
             } catch (Exception e) {
                 e.printStackTrace();
-                // Handle any exceptions
+
             }
         }
 }

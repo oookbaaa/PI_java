@@ -28,15 +28,7 @@
 
                             <children>
 
-                                <ImageView fitHeight="58.0" fitWidth="54.0" layoutX="22.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-
-                                    <image>
-
-                                        <Image url="@img/utilisateur.png" />
-
-                                    </image>
-
-                                </ImageView>
+                                <ImageView fx:id="pdf" fitHeight="58.0" fitWidth="54.0" layoutX="22.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
 
                             </children>
 
@@ -61,11 +53,11 @@
 
                         </JFXButton>
 
-                        <JFXButton fx:id="btn_report" layoutX="17.0" layoutY="211.0" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@Dashboardstyle.css" text="Report">
+                        <JFXButton fx:id="btn_report" layoutX="17.0" layoutY="211.0" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@Dashboardstyle.css" text="   Report">
 
                             <graphic>
 
-                                <ImageView fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="40.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/liste.png" />
                            </image></ImageView>
@@ -99,7 +91,7 @@
 
                         </JFXButton>
 
-                        <JFXButton fx:id="btn_workbench1111" layoutX="4.0" layoutY="759.0" prefHeight="59.0" prefWidth="277.0" styleClass="btn_logout" stylesheets="@Dashboardstyle.css" text="Log out">
+                        <JFXButton fx:id="btn_logout" layoutX="4.0" layoutY="759.0" onAction="#logout" prefHeight="59.0" prefWidth="277.0" styleClass="btn_logout" stylesheets="@Dashboardstyle.css" text="Log out">
 
                             <graphic>
       
@@ -189,7 +181,7 @@
       
                         </JFXButton>
       
-                            <Label layoutX="22.0" layoutY="24.0" text="Hello ! JavaFX Developers">
+                            <Label layoutX="20.0" layoutY="13.0" prefHeight="67.0" prefWidth="450.0" text="Hello ! JavaFX Developers">
       
                                 <font>
       
