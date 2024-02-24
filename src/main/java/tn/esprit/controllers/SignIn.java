@@ -96,7 +96,6 @@ public void HidePasswordOnAction(KeyEvent event) {
         lblclose.setVisible(true);
         passwordField.setVisible(true);
 }
-
     @FXML
     void signIn(ActionEvent event) throws IOException {
         String codecaptcha = codecap.getText();
@@ -140,7 +139,6 @@ public void HidePasswordOnAction(KeyEvent event) {
 
             openWelcomeWindow(user.getNom());
     }
-
     private void openWelcomeWindow(String username) {
         try {
 
@@ -161,7 +159,6 @@ public void HidePasswordOnAction(KeyEvent event) {
             e.printStackTrace();
         }
     }
-
     public void makeStageDrageable(){
         parent.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -187,7 +184,6 @@ public void HidePasswordOnAction(KeyEvent event) {
         parentpane.getChildren().removeAll();
         parentpane.getChildren().setAll(fxml);
     }
-
     @FXML
     private void open_forget(MouseEvent event ) throws IOException {
 
@@ -195,44 +191,22 @@ public void HidePasswordOnAction(KeyEvent event) {
         parentpane.getChildren().removeAll();
         parentpane.getChildren().setAll(fxml);
     }
-
     @FXML
     private void reduceWindow(MouseEvent event) {
         Stage stage = (Stage) reduceIcon.getScene().getWindow();
         stage.setIconified(true);
     }
-
     @FXML
     private void close_app(MouseEvent event){
         System.exit(0);
 
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        captcha(new ActionEvent());
-        makeStageDrageable();
-        txtShowPassword.setVisible(false);
-        lblopen.setVisible(false);
-        passwordField.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                try {
-                    signIn(null);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
     private String generateCode() {
         // Generate a 6-digit random code
         Random random = new Random();
         int code = 100000 + random.nextInt(900000);
         return Integer.toString(code);
     }
-
     @FXML
     private void captcha(ActionEvent event) {
         this.code = generateCode();
@@ -267,6 +241,30 @@ public void HidePasswordOnAction(KeyEvent event) {
             System.out.println(ex.getMessage());
         }
     }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        codecap.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                codecap.setText(newValue.replaceAll("[^\\d]", ""));
+            }
 
-
+            if (codecap.getText().length() > 6) {
+                String limitedText = codecap.getText().substring(0, 6);
+                codecap.setText(limitedText);
+            }
+        });
+        captcha(new ActionEvent());
+        makeStageDrageable();
+        txtShowPassword.setVisible(false);
+        lblopen.setVisible(false);
+        passwordField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                try {
+                    signIn(null);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }
