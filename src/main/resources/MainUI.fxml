@@ -35,7 +35,7 @@
                         <DropShadow />
                     </effect>
                 </Label>
-                <Label focusTraversable="false" layoutX="169.0" layoutY="304.0" text="Electric.Vehicul.Hubs" textFill="WHITE">
+                <Label focusTraversable="false" layoutX="169.0" layoutY="304.0" text="Electric.Vehicule.Hubs" textFill="WHITE">
                     <font>
                         <Font name="Impact" size="24.0" />
                     </font>
@@ -53,7 +53,7 @@
                         <Font name="Impact" size="24.0" />
                     </font>
                 </Label>
-                <Label focusTraversable="false" layoutX="54.0" layoutY="214.0" stylesheets="@stylesheet.css" text="Sign in to continue" textFill="#008f6b94">
+                <Label focusTraversable="false" layoutX="99.0" layoutY="214.0" stylesheets="@stylesheet.css" text="Sign in to continue" textFill="#008f6b94">
                     <font>
                         <Font name="Ebrima Bold" size="14.0" />
                     </font>
@@ -130,6 +130,7 @@
             </Button>
             <TextField fx:id="codecap" layoutX="280.0" layoutY="486.0" prefHeight="37.0" prefWidth="97.0" promptText="saisir code" styleClass="codelb" stylesheets="@stylesheet.css" />
             <Label fx:id="CodeMessagelabel" layoutX="167.0" layoutY="534.0" prefHeight="22.0" prefWidth="209.0" textFill="#d71313" />
+            <Label layoutX="114.0" layoutY="708.0" prefHeight="30.0" prefWidth="173.0" text="        E.V.H App Version : 1.0.0 " />
             </children>
         </Pane>
     </children>
