@@ -76,7 +76,7 @@ public class RegistrationUI implements Initializable {
     public Pane getParentPane() {
         return signUpPane;
     }
-
+    private UserService us = new UserService();
 
 
     @FXML
@@ -106,6 +106,11 @@ public class RegistrationUI implements Initializable {
                 registrationlabel.setText("Please enter a valid email address.");
                 return false;
             }
+            else if (us.doesEmailExist(emailTF.getText()))
+            {
+                registrationlabel.setText("This email already exists return to Sign in page.");
+                return false;
+            }
           else  if (!telTF.getText().matches(telPattern)) {
                 registrationlabel.setText("Please enter a valid phone number (8 digits).");
                 return false;
@@ -129,8 +134,6 @@ public class RegistrationUI implements Initializable {
         return false;
         }
 
-
-
     private void addUserToDatabase() {
         try {
 
@@ -147,19 +150,15 @@ public class RegistrationUI implements Initializable {
             User user = new User(tel, nom, email, hashedPassword, role, address,status, photo);
             ps.ajouter(user);
             clearFields();
-            registrationlabel.setText("User added successfully");
+            registrationlabel.setText("Successfully registered");
         } catch (Exception e) {
             registrationlabel.setText("An error occurred: " + e.getMessage());
         }
     }
-
     @FXML
     void AddUser(ActionEvent event) {
        validateFields();
     }
-
-
-
     @FXML
     private void close_app(MouseEvent event) {
         System.exit(0);
@@ -194,8 +193,6 @@ public class RegistrationUI implements Initializable {
         roleCB.getSelectionModel().clearSelection();
         choosefileBT.setText("");
     }
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         selectRole(list);
@@ -218,4 +215,5 @@ public class RegistrationUI implements Initializable {
         cmdpPF.textProperty().addListener((observable, oldValue, newValue) -> validateFields());
         roleCB.valueProperty().addListener((observable, oldValue, newValue) -> validateFields());
     }
+
     }

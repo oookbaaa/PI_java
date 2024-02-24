@@ -13,6 +13,7 @@ import javafx.util.Duration;
 import tn.esprit.models.Role;
 import tn.esprit.models.User;
 import tn.esprit.services.UserService;
+
 import tn.esprit.utils.SessionManager;
 
 import java.io.IOException;
@@ -21,7 +22,7 @@ public class Welcome {
     @FXML
     private Label welcomeLabel;
     public String sessionId;
-    // Method to set the username and display it in the label
+
     public void setUserName(String username) {
             welcomeLabel.setText("Welcome back," + username);
          sessionId = SessionManager.getLastSessionId();
@@ -43,7 +44,7 @@ public class Welcome {
         Stage stage = (Stage) welcomeLabel.getScene().getWindow();
         stage.close();
 
-        // Load and display the dashboard.fxml interface
+        // Load and display the dashboard.fxml or home.fxml interface
         try {
             User user = UserService.getUserFromSession(sessionId); // Assuming you have a method like this in your UserService class
             if (user != null) {
@@ -51,6 +52,8 @@ public class Welcome {
                 String username = user.getNom(); // Assuming this is the username
 
                 if (userRole != Role.ADMIN) {
+
+
                     System.out.println("User role: " + userRole);
                     Parent root = FXMLLoader.load(getClass().getResource("/Home.fxml"));
                     Stage homeStage = new Stage();
@@ -74,10 +77,6 @@ public class Welcome {
     }
 
 
-
-
-
-        // Your sign in logic here...
 
         private void showDashboardOrHome(User user) {
             try {

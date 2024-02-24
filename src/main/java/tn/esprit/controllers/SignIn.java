@@ -1,21 +1,22 @@
 package tn.esprit.controllers;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -23,18 +24,27 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import tn.esprit.models.User;
 import tn.esprit.services.UserService;
 
-import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
-import java.security.cert.PolicyNode;
+import java.util.Random;
 import java.util.ResourceBundle;
+
+
 
 public class SignIn implements Initializable {
 
     String password;
+    private String code;
+    @FXML
+    private ImageView robot;
+    @FXML
+    private TextField codecap;
     private final UserService ps = new UserService();
     private double xOffset=0;
     private double yOffset=0;
@@ -55,6 +65,8 @@ public class SignIn implements Initializable {
     private ImageView lblclose;
     @FXML
     private Label LoginMessagelabel;
+    @FXML
+    private Label CodeMessagelabel;
     @FXML
     private JFXTextField txtShowPassword;
 
@@ -87,6 +99,7 @@ public void HidePasswordOnAction(KeyEvent event) {
 
     @FXML
     void signIn(ActionEvent event) throws IOException {
+        String codecaptcha = codecap.getText();
         String username = usernameField.getText();
         String password = passwordField.getText();
         String emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
@@ -97,6 +110,16 @@ public void HidePasswordOnAction(KeyEvent event) {
         }
         else if (!usernameField.getText().matches(emailPattern)) {
             LoginMessagelabel.setText("Please enter a valid email address.");
+            return;
+        }
+
+        if (!code.equals(codecaptcha)) {
+           // CodeMessagelabel.setText("Please enter a valid code.");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Attention");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez entrer le code correctement.");
+            alert.showAndWait();
             return;
         }
         String sessionId = ps.authenticateUser(username, password);
@@ -114,16 +137,22 @@ public void HidePasswordOnAction(KeyEvent event) {
             else{
                 LoginMessagelabel.setText("Invalid email or password.");
             }
+
             openWelcomeWindow(user.getNom());
     }
 
     private void openWelcomeWindow(String username) {
         try {
+
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Welcome.fxml"));
             Parent root = loader.load();
+
+
             Welcome controller = loader.getController();
             controller.setUserName(username);
             Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root));
             stage.show();
             Stage signInStage = (Stage) usernameField.getScene().getWindow();
@@ -132,7 +161,6 @@ public void HidePasswordOnAction(KeyEvent event) {
             e.printStackTrace();
         }
     }
-
 
     public void makeStageDrageable(){
         parent.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -182,6 +210,8 @@ public void HidePasswordOnAction(KeyEvent event) {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        captcha(new ActionEvent());
         makeStageDrageable();
         txtShowPassword.setVisible(false);
         lblopen.setVisible(false);
@@ -195,4 +225,48 @@ public void HidePasswordOnAction(KeyEvent event) {
             }
         });
     }
+
+    private String generateCode() {
+        // Generate a 6-digit random code
+        Random random = new Random();
+        int code = 100000 + random.nextInt(900000);
+        return Integer.toString(code);
+    }
+
+    @FXML
+    private void captcha(ActionEvent event) {
+        this.code = generateCode();
+
+        try {
+            QRCodeWriter qrCodeWriter = new QRCodeWriter();
+            String Information = "code : : " + code;
+            int width = 300;
+            int height = 300;
+
+            BufferedImage bufferedImage = null;
+            BitMatrix byteMatrix = qrCodeWriter.encode(Information, BarcodeFormat.QR_CODE, width, height);
+            bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            bufferedImage.createGraphics();
+
+            Graphics2D graphics = (Graphics2D) bufferedImage.getGraphics();
+            graphics.setColor(Color.WHITE);
+            graphics.fillRect(0, 0, width, height);
+            graphics.setColor(Color.BLACK);
+
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    if (byteMatrix.get(i, j)) {
+                        graphics.fillRect(i, j, 1, 1);
+                    }
+                }
+            }
+
+            robot.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
+
+        } catch (WriterException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+
 }

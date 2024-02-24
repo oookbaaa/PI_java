@@ -4,7 +4,9 @@
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -61,22 +63,22 @@
                         <Font size="14.0" />
                     </font>
                 </JFXTextField>
-                <Label focusTraversable="false" layoutX="245.0" layoutY="442.0" onMouseClicked="#open_forget" styleClass="forgetBtn" stylesheets="@stylesheet.css" text="Forget Password ?" textFill="#008f6b93">
+                <Label focusTraversable="false" layoutX="261.0" layoutY="403.0" onMouseClicked="#open_forget" styleClass="forgetBtn" stylesheets="@stylesheet.css" text="Forget Password ?" textFill="#008f6b93">
                     <font>
                         <Font name="Ebrima" size="14.0" />
                     </font>
                 </Label>
-                <JFXButton buttonType="RAISED" layoutX="54.0" layoutY="483.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#signIn" onKeyPressed="#signIn" prefHeight="40.0" prefWidth="300.0" ripplerFill="#6aefce" styleClass="loginBtn" stylesheets="@stylesheet.css" text="Login">
+                <JFXButton buttonType="RAISED" layoutX="51.0" layoutY="576.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#signIn" onKeyPressed="#signIn" prefHeight="40.0" prefWidth="300.0" ripplerFill="#6aefce" styleClass="loginBtn" stylesheets="@stylesheet.css" text="Login">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </JFXButton>
-                <Label focusTraversable="false" layoutX="132.0" layoutY="535.0" text="New User?" textFill="#008f6b93">
+                <Label focusTraversable="false" layoutX="137.0" layoutY="634.0" text="New User?" textFill="#008f6b93">
                     <font>
                         <Font name="Ebrima" size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="signup" focusTraversable="false" layoutX="204.0" layoutY="535.0" onMouseClicked="#open_registration" styleClass="forgetBtn" stylesheets="@stylesheet.css" text="Sign Up" textFill="#00947194">
+                <Label fx:id="signup" focusTraversable="false" layoutX="209.0" layoutY="634.0" onMouseClicked="#open_registration" styleClass="forgetBtn" stylesheets="@stylesheet.css" text="Sign Up" textFill="#00947194">
                     <font>
                         <Font name="Ebrima" size="14.0" />
                     </font>
@@ -106,7 +108,7 @@
                   <Image url="@img/reduire-la-fenetre.png" />
                </image>
             </ImageView>
-            <Label fx:id="LoginMessagelabel" layoutX="54.0" layoutY="413.0" prefHeight="29.0" prefWidth="300.0" stylesheets="@stylesheet.css" textFill="#d71313">
+            <Label fx:id="LoginMessagelabel" layoutX="54.0" layoutY="428.0" prefHeight="29.0" prefWidth="300.0" stylesheets="@stylesheet.css" textFill="#d71313">
                <font>
                   <Font name="Ebrima" size="14.0" />
                </font></Label>
@@ -120,6 +122,14 @@
                   <Image url="@img/les-yeux-croises.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="robot" fitHeight="94.0" fitWidth="108.0" layoutX="31.0" layoutY="457.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="cap" layoutX="165.0" layoutY="487.0" mnemonicParsing="false" onAction="#captcha" prefHeight="35.0" prefWidth="108.0" styleClass="loginBtn" stylesheets="@stylesheet.css" text="Re-Captcha" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <TextField fx:id="codecap" layoutX="280.0" layoutY="486.0" prefHeight="37.0" prefWidth="97.0" promptText="saisir code" styleClass="codelb" stylesheets="@stylesheet.css" />
+            <Label fx:id="CodeMessagelabel" layoutX="167.0" layoutY="534.0" prefHeight="22.0" prefWidth="209.0" textFill="#d71313" />
             </children>
         </Pane>
     </children>

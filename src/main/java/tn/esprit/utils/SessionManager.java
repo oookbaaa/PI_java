@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class SessionManager {
     private static Map<String, User> sessions = new HashMap<>();
-    private static String lastSessionId; // Static variable to store the last generated session ID
+    private static String lastSessionId;
 
     public static String createSession(User user) {
         String sessionId = UUID.randomUUID().toString();

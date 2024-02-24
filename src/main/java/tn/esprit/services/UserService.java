@@ -1,24 +1,32 @@
 package tn.esprit.services;
 
 
+
+import tn.esprit.controllers.SmsSender;
 import tn.esprit.models.Status;
 import tn.esprit.models.User;
 import tn.esprit.utils.MyDatabase;
 import tn.esprit.utils.PasswordHasher;
 import tn.esprit.utils.SessionManager;
 
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UserService implements IService <User>{
 
+
     private Connection connection;
-public static boolean blocked=false;
+    public static boolean blocked=false;
     public UserService(){
         connection = MyDatabase.getInstance().getConnection();
+
     }
+
 
     @Override
     public void ajouter(User user) throws SQLException {
@@ -28,7 +36,6 @@ public static boolean blocked=false;
         st.executeUpdate(req);
         System.out.println("Ajoutée");
     }
-
     @Override
     public void modifier(User user) throws SQLException {
         String req = "UPDATE user SET nom_user = ?, mdp_user = ?, role_user = ?, adresse_user = ? , photo_user = ? , email_user = ? , tel_user = ?,status_user = ? WHERE id_user = ?";
@@ -45,7 +52,6 @@ public static boolean blocked=false;
         ps.executeUpdate();
         System.out.println("Modifié");
     }
-
     @Override
     public void supprimer(int id) throws SQLException {
         String req = "DELETE FROM user WHERE id_user = ?";
@@ -54,7 +60,6 @@ public static boolean blocked=false;
         ps.executeUpdate();
         System.out.println("Supprimé");
     }
-
     @Override
     public List<User> recuperer() throws SQLException {
         List<User> users = new ArrayList<>();
@@ -72,55 +77,13 @@ public static boolean blocked=false;
             user.setRole(rs.getString("role_user"));
             user.setAdresse(rs.getString("adresse_user"));
             String statusString = rs.getString("status_user");
-                Status status = Status.fromString(statusString);
-                user.setStatus(status);
+            Status status = Status.fromString(statusString);
+            user.setStatus(status);
             user.setPhoto(rs.getString("photo_user"));
             users.add(user);
         }
         return users;
     }
-
-
-//    public User authenticateUser(String email, String mdp) {
-//
-//
-//
-//            String query = "SELECT * FROM user WHERE email_user = ? AND mdp_user = ?";
-//            try (PreparedStatement statement = connection.prepareStatement(query)) {
-//                statement.setString(1, email);
-//                statement.setString(2, mdp);
-//
-//                try (ResultSet resultSet = statement.executeQuery()) {
-//                    if (resultSet.next()) {
-//                        String statusString = resultSet.getString(
-//                                "status_user");
-//                        // Convert the string to the Status enum
-//                        Status status = Status.fromString(statusString);
-//
-//                        return new User(
-//                                resultSet.getInt("id_user"),
-//                                resultSet.getInt("tel_user"),
-//                                resultSet.getString("nom_user"),
-//                                resultSet.getString("email_user"),
-//                                resultSet.getString("mdp_user"),
-//                                resultSet.getString("role_user"),
-//                                resultSet.getString("adresse_user"),
-//                                status,
-//// Now you have the status as a string, you can convert it to the Status enum as needed
-//
-//                        resultSet.getString("photo_user")
-//
-//                                // Add other user properties as needed
-//                        );
-//                    }
-//                }
-//            }
-//        catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return null;
-//    }
 
     public String authenticateUser(String email, String password) {
         try {
@@ -157,8 +120,14 @@ public static boolean blocked=false;
                                         Status.fromString(resultSet.getString("status_user")),
                                         resultSet.getString("photo_user")
                                 );
+                                    String messageBody = "Welcome back, " + user.getNom() + ".";
+                                SmsSender.sendSms(String.valueOf(user.getTel()), messageBody);
+
                                 return SessionManager.createSession(user);
                             } else {
+
+                                String messageBody = "Your account has been blocked, please contact us for more information :" + "evh0hve@gmail.com .";
+                                SmsSender.sendSms("55420690", messageBody);
                                 blocked=true;
                             }
                         } else {
@@ -169,6 +138,8 @@ public static boolean blocked=false;
                         // No user found with the given email
                         System.out.println("User not found.");
                     }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
             }
         } catch (SQLException | NoSuchAlgorithmException e) {
@@ -179,16 +150,9 @@ public static boolean blocked=false;
 
     public static User getUserFromSession(String sessionId) {
         System.out.println(sessionId);
-
         return SessionManager.getSession(sessionId);
+
     }
-
-
-
-
-
-
-
 
     public static boolean doesEmailExist(String email) {
         Connection connection = null;
@@ -196,19 +160,11 @@ public static boolean blocked=false;
         ResultSet resultSet = null;
 
         try {
-
-
             connection = MyDatabase.getInstance().getConnection();
-
-
             String sql = "SELECT COUNT(*) AS count FROM user WHERE email_user = ?";
             statement = connection.prepareStatement(sql);
             statement.setString(1, email);
-
-
             resultSet = statement.executeQuery();
-
-
             if (resultSet.next()) {
                 int count = resultSet.getInt("count");
                 return count > 0;
@@ -230,5 +186,57 @@ public static boolean blocked=false;
         }
         return false;
     }
+
+    public boolean checkEmailExists(String email) {
+        connection = MyDatabase.getInstance().getConnection();
+        boolean result = false;
+        try {
+            String req = "SELECT * FROM user WHERE email = ?";
+            PreparedStatement st = connection.prepareStatement(req);
+            st.setString(1, email);
+            ResultSet rs = st.executeQuery();
+            result = rs.next();
+            System.out.println("result : " + result);
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return result;
+    }
+
+    public User getUserByEmail(String email) {
+        connection = MyDatabase.getInstance().getConnection();
+        String query = "SELECT * from user WHERE email_user = '" + email + "'";
+
+        User t = null;
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+
+                t = new User(rs.getInt("id_user"), rs.getInt("tel_user"), rs.getString("nom_user"), rs.getString("email_user"),
+                        rs.getString("mdp_user"), rs.getString("role_user"), rs.getString("adresse_user"), Status.valueOf(rs.getString("status_user").toUpperCase()),
+                        rs.getString("photo_user"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return t;
+
+    }
+    public void changePassword(String mdp, String email) throws SQLException, NoSuchAlgorithmException {
+        String hashedPassword = PasswordHasher.hashPassword(mdp);
+        String req5 = "UPDATE user SET mdp_user = ?  WHERE email_user = ?";
+        PreparedStatement pst = connection.prepareStatement(req5);
+        pst.setString(1, hashedPassword);
+        pst.setString(2, email);
+        int rowUpdated = pst.executeUpdate();
+        if (rowUpdated > 0) {
+            System.out.println("Mdp modifié");
+        } else {
+            System.out.println("ERR");
+        }    }
+
 }
 

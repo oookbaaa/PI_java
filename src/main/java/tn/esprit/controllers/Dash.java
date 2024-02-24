@@ -19,8 +19,13 @@ import tn.esprit.models.User;
 import tn.esprit.services.UserService;
 import tn.esprit.utils.SessionManager;
 
+import javax.mail.internet.*;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class Dash implements Initializable {
@@ -42,9 +47,24 @@ public class Dash implements Initializable {
     @FXML
     private JFXButton btn_report;
 
+
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        makeStageDrageable();
+
+    }
     @FXML
     private void btn_list_view(ActionEvent event) throws IOException {
         AnchorPane view = FXMLLoader.load(getClass().getResource("/Dashboard.fxml"));
+        borderpane.setCenter(view);
+    }
+
+    @FXML
+    private void btn_Mailing(ActionEvent event) throws IOException {
+        AnchorPane view = FXMLLoader.load(getClass().getResource("/Mail.fxml"));
         borderpane.setCenter(view);
     }
 
@@ -53,10 +73,8 @@ public class Dash implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 xOffset = event.getSceneX();
-
                 yOffset = event.getSceneY();
             }
-
         });
         root.setOnMouseDragged(new EventHandler<MouseEvent>(){
             @Override
@@ -78,12 +96,7 @@ public class Dash implements Initializable {
 
     }
     public String sessionId;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        makeStageDrageable();
-
-    }
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
@@ -98,5 +111,7 @@ public class Dash implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+
 
 }

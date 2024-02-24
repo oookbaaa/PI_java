@@ -1,37 +1,26 @@
 package tn.esprit.controllers;
 
 import com.jfoenix.controls.JFXButton;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-import javafx.util.Callback;
-import javafx.util.Duration;
 import tn.esprit.models.Status;
 import tn.esprit.models.User;
 import tn.esprit.services.UserService;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class Dashboard implements Initializable {
@@ -129,13 +118,6 @@ public class Dashboard implements Initializable {
     }
 
 
-
-
-
-
-
-
-
     public void makeStageDrageable(){
         parentd.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -157,8 +139,6 @@ public class Dashboard implements Initializable {
     }
 
 
-
-
     private void blockUser(User user) {
         try {
             UserService us = new UserService(); // Instantiate your UserService class
@@ -178,6 +158,8 @@ public class Dashboard implements Initializable {
             System.err.println("Error blocking user: " + e.getMessage());
         }
     }
+
+
     private void unblockUser(User user) {
 
         try {

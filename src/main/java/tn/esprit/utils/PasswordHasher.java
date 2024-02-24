@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 public class PasswordHasher {
-    public static String hashPassword(String password) throws NoSuchAlgorithmException, NoSuchAlgorithmException {
+    public static String hashPassword(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] hash = digest.digest(password.getBytes());
 
