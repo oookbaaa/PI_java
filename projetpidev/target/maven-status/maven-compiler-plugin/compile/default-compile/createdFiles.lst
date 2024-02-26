@@ -1,0 +1,6 @@
+tn\esprit\ApplicationMain.class
+tn\esprit\controller\produit\ProduitPageController.class
+tn\esprit\controller\homePageController.class
+tn\esprit\controller\fournissuer\FournisseurCardViewController.class
+tn\esprit\controller\fournissuer\FournisseurPageController.class
+tn\esprit\controller\produit\ProduitCardViewController.class
