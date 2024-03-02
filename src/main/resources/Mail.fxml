@@ -6,15 +6,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="402.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.Mailing">
+<AnchorPane prefHeight="402.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@Smail.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.Mailing">
 <children>
-    <Text layoutX="25.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipient's Email:" />
+    <Text layoutX="25.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Recipient's Email:" />
     <TextField fx:id="txtRecipientEmail" layoutX="150.0" layoutY="27.0" prefHeight="25.0" prefWidth="400.0" />
-    <Text layoutX="25.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subject:" />
-    <TextField fx:id="txtSubject" layoutX="150.0" layoutY="78.0" prefHeight="25.0" prefWidth="400.0" />
-    <Text layoutX="25.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message Body:" />
-    <TextArea fx:id="txtBody" layoutX="25.0" layoutY="175.0" prefHeight="175.0" prefWidth="550.0" />
-    <Button fx:id="btnSend" layoutX="260.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#sendEmail" text="Send Email" />
-      <Button layoutX="271.0" layoutY="137.0" mnemonicParsing="false" onMouseClicked="#addAttachment" text="Add file" />
+    <Text layoutX="25.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Subject:" />
+    <TextField fx:id="txtSubject" layoutX="150.0" layoutY="78.0" prefHeight="25.0" prefWidth="400.0" stylesheets="@Smail.css" />
+    <Text layoutX="25.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Message Body:" />
+    <TextArea fx:id="txtBody" layoutX="40.0" layoutY="175.0" prefHeight="175.0" prefWidth="542.0" styleClass="text-area" stylesheets="@Smail.css" />
+    <Button fx:id="btnSend" layoutX="522.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#sendEmail" text="Send Email" />
+      <Button layoutX="255.0" layoutY="350.0" mnemonicParsing="false" onMouseClicked="#addAttachment" text="Add file" />
 </children>
 </AnchorPane>

@@ -6,13 +6,13 @@ Projet permettant de créer une application ayant 3 clients Java Web et mobile t
 
  ### Sprint 1:
  - Sprint JAVA
- ## Objectifs Sprint Sprint JAVA
+ ## Objectifs Sprint JAVA
  1. Développer une application JAVA avec JAVAFX  en respectant le modèle `MVC`.
 1. Organiser la couche métier en respectant les principes `OO`
 1. Gérer des formulaires avancés `avec la validation des champs de saisies`
 1. Intégrer des bundles externes `Rating, Statistiques, Partage sur les réseaux sociaux etc....`.
 
-## Objectifs Sprint Sprint WEB
+## Objectifs Sprint WEB
 1. Développer une application WEB avec SYMFONY `Front
    Office + Back Office` en respectant le modèle `MVC`.
 1. Organiser la couche métier en respectant les principes `OO`

@@ -1,0 +1,113 @@
+.pages-container{
+    -fx-background-color: #1D6611;
+}
+.left-menu-container{
+    -fx-background-color: #1D6611;
+}
+.header-container{
+    -fx-background-color: #1D6611;
+}
+.main-content-container{
+    -fx-background-color: #fff;
+    -fx-background-radius: 18 0 0 18;
+}
+.menu-btn{
+    -fx-font-family: "Jost Medium";
+    -fx-font-size: 16;
+    -fx-background-color: transparent;
+    -fx-text-fill: #D5FFDC;
+}
+.menu-btn:hover{
+    -fx-opacity: 0.6;
+}
+.global-info-container{
+    -fx-background-color: #7DC145;
+    -fx-background-radius: 30px;
+}
+.title-global-info{
+    -fx-font-family: "Jost Medium";
+    -fx-font-weight: normal;
+    -fx-font-size: 20;
+    -fx-text-fill: #000000;
+}
+.nbr-tot-students, .nbr-new-students{
+    -fx-font-family: "Jost";
+    -fx-font-weight: bold;
+    -fx-font-size: 32;
+    -fx-text-fill: #000000;
+}
+.month-global-info, .prc-new-etd, .prc-tot-etd{
+    -fx-font-family: "Jost";
+    -fx-font-weight: normal;
+    -fx-font-size: 12;
+}
+.feedback-container, .gender-ratio-dashboard, .top-courses-container{
+    -fx-background-color: #7DC145;
+    -fx-background-radius: 30px;
+}
+.feedback-label{
+    -fx-font-family: "Jost";
+    -fx-font-weight: normal;
+    -fx-font-size: 22;
+    -fx-text-fill: #000000;
+}
+.feedback-scroll-pane{
+    -fx-background-color: #7DC145;
+}
+.feedback-content-container{
+    -fx-background-color: #7DC145;
+}
+.feedback-scroll-pane .scroll-bar:vertical, .scroll-bar:horizontal{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 2px;
+}
+.feedback-scroll-pane .scroll-bar:vertical .thumb, .scroll-bar:horizontal .thumb {
+    -fx-background-color: #000000;
+}
+.feedback-scroll-pane .scroll-bar:vertical .thumb:hover, .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.68);
+}
+.feedback-scroll-pane .scroll-bar:vertical .increment-button,
+.feedback-scroll-pane .scroll-bar:vertical .decrement-button ,
+.feedback-scroll-pane .scroll-bar:horizontal .increment-button ,
+.feedback-scroll-pane .scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+}
+.feedback-item-container{
+    -fx-background-color: #7DC145;
+    -fx-background-radius: 24px;
+}
+.feedback-author-name{
+    -fx-font-family: "Jost Medium";
+    -fx-font-size: 20;
+    -fx-text-fill: #000000;
+}
+.feedback-date{
+    -fx-font-family: "Jost";
+    -fx-font-size: 16;
+    -fx-opacity: 0.6;
+    -fx-text-fill: #000000;
+}
+.feedback-content-text{
+    -fx-font-family: "Jost";
+    -fx-font-size: 18;
+    -fx-text-fill: #000000;
+}
+.gender-ratio-desc{
+    -fx-font-family: "Jost";
+    -fx-font-size: 18;
+    -fx-opacity: 0.6;
+    -fx-text-fill: #000000;
+}
+.course-title{
+    -fx-font-family: "Jost";
+    -fx-font-size: 18;
+    -fx-text-fill: #000000;
+}
+.nbr-registred-course{
+    -fx-font-family: "Jost";
+    -fx-font-size: 16;
+    -fx-opacity: 0.6;
+    -fx-text-fill: #000000;
+}

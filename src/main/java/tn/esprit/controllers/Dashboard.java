@@ -1,24 +1,27 @@
 package tn.esprit.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import tn.esprit.models.Status;
 import tn.esprit.models.User;
 import tn.esprit.services.UserService;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -45,15 +48,26 @@ public class Dashboard implements Initializable {
     private TableColumn<User, Integer> telc;
     @FXML
     private AnchorPane parentd;
+    @FXML
+    private ScrollPane scroll;
+
 
     private double xOffset=0;
     private double yOffset=0;
 
+    @FXML
+    private VBox feedbackContentContainer;
+    List<User> users = new ArrayList<>();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         makeStageDrageable();
+        try {
+            showAllUsers();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         try {
             List<User> users = ps.recuperer();
@@ -180,4 +194,41 @@ public class Dashboard implements Initializable {
         }
     }
 
+    private void displayUsers() {
+        try {
+            feedbackContentContainer.getChildren().clear();
+            for (User u : users) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/usersDashboardItem.fxml"));
+                Parent root = fxmlLoader.load();
+                userDashboardItem itemController = fxmlLoader.getController();
+                itemController.setFeedBackData(u);
+                feedbackContentContainer.getChildren().add(root);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }}
+
+    public void showAllUsers() throws SQLException {
+        UserService use = new UserService();
+        users = use.recuperer();
+        users = users.stream()
+                .filter(user -> !user.getRole().equals("ADMIN"))
+                .collect(Collectors.toList());
+        displayUsers();
+    }
+    @FXML
+    private JFXTextField searchinput;
+    @FXML
+    private void handleSearch() {
+        String searchTerm = searchinput.getText().trim();
+        feedbackContentContainer.getChildren().clear();
+        showAllUsers(searchTerm);
+    }
+
+    public void showAllUsers(String searchTerm) {
+        UserService userService = new UserService();
+        users = userService.searchUsers(searchTerm);
+        displayUsers();
+    }
 }

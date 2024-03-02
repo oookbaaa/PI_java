@@ -59,7 +59,7 @@
             </font>
         </JFXPasswordField>
         <JFXComboBox fx:id="roleCB" focusColor="#009471" labelFloat="true" layoutX="50.0" layoutY="440.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="300.0" promptText="Role *" unFocusColor="#009471" />
-        <JFXButton fx:id="choosefileBT" layoutX="50.0" layoutY="646.0" onAction="#chooseFile" prefHeight="30.0" prefWidth="300.0" ripplerFill="#00946f" styleClass="ChooseFileBtn" text="Choose File" textFill="#00946f" />
+        <JFXButton fx:id="choosefileBT" layoutX="50.0" layoutY="647.0" onAction="#chooseFile" prefHeight="30.0" prefWidth="300.0" ripplerFill="#00946f" styleClass="ChooseFileBtn" text="Choose File" textFill="#00946f" />
         <JFXButton buttonType="RAISED" layoutX="262.0" layoutY="686.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#AddUser" prefHeight="40.0" prefWidth="124.0" ripplerFill="#6aefce" styleClass="loginBtn" stylesheets="@stylesheet.css" text="Register">
             <font>
                 <Font name="System Bold" size="14.0" />
@@ -116,7 +116,7 @@
          </image>
       </ImageView>
       <ImageView fx:id="userPhoto" fitHeight="131.0" fitWidth="146.0" layoutX="233.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="registrationlabel" layoutX="50.0" layoutY="608.0" prefHeight="30.0" prefWidth="300.0" textFill="#bc0606">
+      <Label fx:id="registrationlabel" layoutX="50.0" layoutY="604.0" prefHeight="40.0" prefWidth="300.0" textFill="#bc0606">
          <font>
             <Font name="Ebrima" size="12.0" />
          </font></Label>

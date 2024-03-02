@@ -57,6 +57,7 @@ public class Welcome {
                     System.out.println("User role: " + userRole);
                     Parent root = FXMLLoader.load(getClass().getResource("/Home.fxml"));
                     Stage homeStage = new Stage();
+                    homeStage.initStyle(StageStyle.UNDECORATED);
                     homeStage.setScene(new Scene(root));
                     homeStage.show();
                 } else {

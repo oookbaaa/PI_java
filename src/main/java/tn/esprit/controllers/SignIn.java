@@ -180,7 +180,7 @@ public void HidePasswordOnAction(KeyEvent event) {
     @FXML
     private void open_registration(MouseEvent event ) throws IOException {
 
-        Parent fxml = FXMLLoader.load(getClass().getResource("/RegistrationUi.fxml"));
+        Parent fxml = FXMLLoader.load(getClass().getResource("/RegistrationUI.fxml"));
         parentpane.getChildren().removeAll();
         parentpane.getChildren().setAll(fxml);
     }

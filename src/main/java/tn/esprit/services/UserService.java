@@ -38,20 +38,27 @@ public class UserService implements IService <User>{
     }
     @Override
     public void modifier(User user) throws SQLException {
-        String req = "UPDATE user SET nom_user = ?, mdp_user = ?, role_user = ?, adresse_user = ? , photo_user = ? , email_user = ? , tel_user = ?,status_user = ? WHERE id_user = ?";
-        PreparedStatement ps = connection.prepareStatement(req);
-        ps.setString(1, user.getNom());
-        ps.setString(2, user.getMdp());
-        ps.setString(3, user.getRole());
-        ps.setString(4, user.getAdresse());
-        ps.setString(5, user.getPhoto());
-        ps.setString(6, user.getEmail());
-        ps.setInt(7, user.getTel());
-        ps.setString(8, user.getStatus().name());
-        ps.setInt(9, user.getId());
-        ps.executeUpdate();
-        System.out.println("Modifié");
+        String req = "UPDATE user SET nom_user = ?,  adresse_user = ? , photo_user = ? , email_user = ? , tel_user = ?,status_user = ? WHERE id_user = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(req);
+            ps.setString(1, user.getNom());
+            ps.setString(2, user.getAdresse());
+            ps.setString(3, user.getPhoto());
+            ps.setString(4, user.getEmail());
+            ps.setInt(5, user.getTel());
+            ps.setString(6, user.getStatus().name());
+            ps.setInt(7, user.getId());
+
+            System.out.println("Modifié");
+            int rowsAffected = ps.executeUpdate();
+            System.out.println("Rows updated: " + rowsAffected);
+        } catch (SQLException e) {
+            // Handle or log the exception
+            System.err.println("Error modifying user: " + e.getMessage());
+            throw e; // Rethrow the exception if necessary
+        }
     }
+
     @Override
     public void supprimer(int id) throws SQLException {
         String req = "DELETE FROM user WHERE id_user = ?";
@@ -121,7 +128,7 @@ public class UserService implements IService <User>{
                                         resultSet.getString("photo_user")
                                 );
                                     String messageBody = "Welcome back, " + user.getNom() + ".";
-                                SmsSender.sendSms(String.valueOf(user.getTel()), messageBody);
+                                //SmsSender.sendSms(String.valueOf(user.getTel()), messageBody);
 
                                 return SessionManager.createSession(user);
                             } else {
@@ -238,5 +245,80 @@ public class UserService implements IService <User>{
             System.out.println("ERR");
         }    }
 
+    public User getUserById(int id){
+        String sql = "SELECT * FROM users WHERE id_user = ?";
+        try{
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1,id);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next()){
+                User user = new User();
+                user.setId(rs.getInt("id_user"));
+                user.setTel(rs.getInt("tel_user"));
+                user.setNom(rs.getString("nom_user"));
+                user.setEmail(rs.getString("email_user"));
+                user.setMdp(rs.getString("mdp_user"));
+                user.setRole(rs.getString("role_user"));
+                user.setAdresse(rs.getString("adresse_user"));
+                String statusString = rs.getString("status_user");
+                Status status = Status.fromString(statusString);
+                user.setStatus(status);
+                user.setPhoto(rs.getString("photo_user"));
+                return user;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;}
+
+    public List<User> searchUsers(String searchTerm) {
+        List<User> searchResults = new ArrayList<>();
+        String sql = "SELECT * FROM user WHERE nom_user LIKE ? OR role_user LIKE ? AND photo_user IS NOT NULL";
+
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            String likeTerm = "%" + searchTerm + "%";
+            preparedStatement.setString(1, likeTerm);
+            preparedStatement.setString(2, likeTerm);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id_user"));
+                user.setTel(rs.getInt("tel_user"));
+                user.setNom(rs.getString("nom_user"));
+                user.setEmail(rs.getString("email_user"));
+                user.setMdp(rs.getString("mdp_user"));
+                user.setRole(rs.getString("role_user"));
+                user.setAdresse(rs.getString("adresse_user"));
+                String statusString = rs.getString("status_user");
+                Status status = Status.fromString(statusString);
+                user.setStatus(status);
+                user.setPhoto(rs.getString("photo_user"));
+
+                searchResults.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return searchResults;
+    }
+
+
+    public boolean isPasswordConfirmed(int idUser,String password){
+        String qry = "SELECT mdp_user FROM user WHERE  id_user = ? AND mdp_user = ?";
+        try{
+            PreparedStatement stm = connection.prepareStatement(qry);
+            stm.setInt(1,idUser);
+            stm.setString(2,password);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next())
+                return true;
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
 }
 

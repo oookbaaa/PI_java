@@ -13,7 +13,7 @@ public class Main {
         UserService ps = new UserService();
         try {
 
-            ps.ajouter(new User(8,55420690, "okba", "okba@okba.tn", "123456","EMPLOYE","el ghazela", Status.ACTIVE,null));
+            ps.modifier(new User(13,55420690, "okba", "okba@okba.tn", "123456789aA","EMPLOYE","el ghazela", Status.ACTIVE,"Users/BEDHIAFI/IdeaProjects/EVH/src/main/resources/img/voiture-electrique%20(1).png))"));
             //ps.supprimer(1);
              //System.out.println(ps.recuperer());
 //          boolean p=  doesEmailExist("okba@okba.tn");

@@ -152,7 +152,7 @@ public class RegistrationUI implements Initializable {
             clearFields();
             registrationlabel.setText("Successfully registered");
         } catch (Exception e) {
-            registrationlabel.setText("An error occurred: " + e.getMessage());
+            registrationlabel.setText("Choose photo");
         }
     }
     @FXML

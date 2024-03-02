@@ -35,6 +35,32 @@ public class User {
         this.adresse = adresse;
         this.photo = photo;
     }
+
+
+
+
+
+
+
+    public User(int id, int tel, String nom, String email, String mdp, String adresse, String photo) {
+        this.id = id;
+        this.tel = tel;
+        this.nom = nom;
+        this.email = email;
+        this.mdp = mdp;
+        this.adresse = adresse;
+        this.photo = photo;
+    }
+
+    public User(int id,int tel, String nom, String email, String adresse, String photo) {
+        this.id = id;
+        this.tel = tel;
+        this.nom = nom;
+        this.email = email;
+        this.adresse = adresse;
+        this.photo = photo;
+    }
+
     public static User getCurrent_User() {
         return Current_User;
     }

@@ -1,6 +1,7 @@
 package tn.esprit.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,12 +9,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import tn.esprit.models.Role;
 import tn.esprit.models.User;
 import tn.esprit.services.UserService;
@@ -25,6 +28,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -34,6 +40,7 @@ public class Dash implements Initializable {
     private double yOffset=0;
     @FXML
     private HBox root;
+
     @FXML
     private JFXButton btn_logout;
     @FXML
@@ -46,26 +53,35 @@ public class Dash implements Initializable {
     private ImageView pdf;
     @FXML
     private JFXButton btn_report;
+    @FXML
+    private Circle profileImg;
 
+    @FXML
+    private Pane paneshow;
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+
         makeStageDrageable();
+        User loggedInUser = SessionManager.getSession(SessionManager.getLastSessionId());
+        profileImg.setFill(new ImagePattern(new Image(loggedInUser.getPhoto())));
+
+
 
     }
     @FXML
     private void btn_list_view(ActionEvent event) throws IOException {
         AnchorPane view = FXMLLoader.load(getClass().getResource("/Dashboard.fxml"));
-        borderpane.setCenter(view);
+        paneshow.getChildren().setAll(view);
     }
 
     @FXML
     private void btn_Mailing(ActionEvent event) throws IOException {
         AnchorPane view = FXMLLoader.load(getClass().getResource("/Mail.fxml"));
-        borderpane.setCenter(view);
+        paneshow.getChildren().setAll(view);
     }
 
     public void makeStageDrageable(){
@@ -111,6 +127,8 @@ public class Dash implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+
 
 
 
