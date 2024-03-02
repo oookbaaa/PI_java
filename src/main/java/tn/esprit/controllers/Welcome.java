@@ -70,8 +70,6 @@ public class Welcome {
 
                 }
             }
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }

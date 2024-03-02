@@ -8,12 +8,12 @@
 
 <AnchorPane fx:id="welcome" prefHeight="519.0" prefWidth="802.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.Welcome">
    <children>
-      <ImageView fitHeight="519.0" fitWidth="517.0" layoutX="143.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="517.0" fitWidth="519.0" layoutX="141.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/pdp.png" />
          </image>
       </ImageView>
-      <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="210.0" prefWidth="431.0" stylesheets="@stylesheet.css" textAlignment="CENTER" textFill="#3594e7" underline="true">
+      <Label fx:id="welcomeLabel" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="-2.0" layoutY="76.0" prefHeight="94.0" prefWidth="802.0" stylesheets="@stylesheet.css" textAlignment="CENTER" textFill="#3594e7" underline="true">
          <font>
             <Font name="Berlin Sans FB" size="36.0" />
          </font></Label>
