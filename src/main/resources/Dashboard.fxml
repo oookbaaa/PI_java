@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="parentd" prefHeight="693.0" prefWidth="1012.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.Dashboard">
    <children>
-      <TableView fx:id="tableView" layoutX="663.0" layoutY="389.0" prefHeight="0.0" prefWidth="46.0" stylesheets="@tableview.css">
+      <TableView fx:id="tableView" layoutX="663.0" layoutY="389.0" prefHeight="0.0" prefWidth="46.0" >
          <columns>
             <TableColumn fx:id="nomc" prefWidth="140.0" style="-fx-alignment: center;" text="NAME" />
             <TableColumn fx:id="telc" prefWidth="140.0" style="-fx-alignment: center;" text="PHONE" />

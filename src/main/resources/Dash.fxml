@@ -27,7 +27,7 @@
                         <Pane fx:id="inner_pane" layoutX="17.0" layoutY="27.0" prefHeight="78.0" prefWidth="248.0" styleClass="user-details-container" stylesheets="@styleEye.css">
                      <children>
                         <Circle fx:id="profileImg" fill="DODGERBLUE" layoutX="40.0" layoutY="39.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Label fx:id="dashusername" layoutX="81.0" layoutY="16.0" prefHeight="44.0" prefWidth="117.0" text="Label">
+                        <Label fx:id="dashusername" layoutX="92.0" layoutY="16.0" prefHeight="44.0" prefWidth="112.0" text="Label">
                            <font>
                               <Font size="24.0" />
                            </font>

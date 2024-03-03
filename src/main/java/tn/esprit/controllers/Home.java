@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -27,7 +28,8 @@ import java.io.IOException;
 public class Home {
     @FXML
     private JFXTextField txt_search;
-
+    @FXML
+    private Label dashusername;
     @FXML
     private BorderPane borderpane;
 
@@ -57,6 +59,9 @@ public class Home {
 
     @FXML
     private void initialize() {
+
+
+        dashusername.setText(loggedInUser.getNom());
 if (loggedInUser.getPhoto() != null) {
     User loggedInUser = SessionManager.getSession(SessionManager.getLastSessionId());
     profileImg.setFill(new ImagePattern(new Image(loggedInUser.getPhoto())));

@@ -3,6 +3,8 @@ package tn.esprit.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
@@ -28,6 +31,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.util.StringConverter;
 import tn.esprit.models.Role;
 import tn.esprit.models.Status;
@@ -151,13 +155,21 @@ public class RegistrationUI implements Initializable {
             ps.ajouter(user);
             clearFields();
             registrationlabel.setText("Successfully registered");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Registration Successful");
+            alert.setHeaderText(null);
+            alert.setContentText("User registered successfully.");
+            alert.showAndWait();
+            Parent root = FXMLLoader.load(getClass().getResource("/MainUi.fxml"));
+            emailTF.getScene().setRoot(root);
         } catch (Exception e) {
             registrationlabel.setText("Choose photo");
         }
     }
     @FXML
-    void AddUser(ActionEvent event) {
+    void AddUser(ActionEvent event) throws IOException {
        validateFields();
+
     }
     @FXML
     private void close_app(MouseEvent event) {

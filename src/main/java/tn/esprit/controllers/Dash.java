@@ -67,16 +67,18 @@ public class Dash implements Initializable {
     private Pane paneshow;
 
 
+    @FXML
+    private Label dashusername;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
+
         makeStageDrageable();
         User loggedInUser = SessionManager.getSession(SessionManager.getLastSessionId());
         profileImg.setFill(new ImagePattern(new Image(loggedInUser.getPhoto())));
-
-
+        dashusername.setText(loggedInUser.getNom());
 
     }
     @FXML

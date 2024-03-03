@@ -15,9 +15,9 @@
          </font></Text>
     <TextField fx:id="txtRecipientEmail" layoutX="388.0" layoutY="149.0" prefHeight="25.0" prefWidth="400.0" />
     <Text layoutX="263.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Subject:" />
-    <TextField fx:id="txtSubject" layoutX="388.0" layoutY="200.0" prefHeight="25.0" prefWidth="400.0" stylesheets="@Smail.css" />
+    <TextField fx:id="txtSubject" layoutX="388.0" layoutY="200.0" prefHeight="25.0" prefWidth="400.0"  />
     <Text layoutX="263.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Message Body:" />
-    <TextArea fx:id="txtBody" layoutX="278.0" layoutY="297.0" prefHeight="175.0" prefWidth="542.0" styleClass="text-area" stylesheets="@Smail.css" />
+    <TextArea fx:id="txtBody" layoutX="278.0" layoutY="297.0" prefHeight="175.0" prefWidth="542.0" styleClass="text-area"  />
     <Button fx:id="btnSend" layoutX="760.0" layoutY="552.0" mnemonicParsing="false" onMouseClicked="#sendEmail" text="Send Email" />
       <Button layoutX="527.0" layoutY="472.0" mnemonicParsing="false" onMouseClicked="#addAttachment" text="Add file" />
 </children>

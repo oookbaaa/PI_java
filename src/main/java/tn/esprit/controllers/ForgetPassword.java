@@ -26,11 +26,13 @@ import java.util.Optional;
 import java.util.Random;
 
 public class ForgetPassword {
-
+    @FXML
+    private JFXButton DONE;
     public JFXButton reset;
     public JFXTextField confirmPasswordField;
     public JFXTextField newPasswordField;
     public JFXTextField verificationCodeField;
+    public ImageView iconemail;
     @FXML
     private JFXButton smsButton;
 
@@ -68,7 +70,8 @@ public class ForgetPassword {
             newPasswordField.setVisible(false);
             confirmPasswordField.setVisible(false);
             verificationCodeField.setVisible(false);
-
+            emailverif.setVisible(false);
+            iconemail.setVisible(false);
             // Hide reset button and show SMS and Email buttons
             reset.setVisible(false);
             smsButton.setVisible(true);
@@ -92,6 +95,8 @@ public class ForgetPassword {
 
             // Store the correct verification code
             correctVerificationCode = verificationCode;
+            smsButton.setVisible(false);
+            emailButton.setVisible(false);
             verificationCodeField.setVisible(true);
 
             // Show success message
@@ -117,6 +122,8 @@ public class ForgetPassword {
 
             // Store the correct verification code
             correctVerificationCode = verificationCode;
+            smsButton.setVisible(false);
+            emailButton.setVisible(false);
             verificationCodeField.setVisible(true);
 
             // Show success message
@@ -149,6 +156,7 @@ public class ForgetPassword {
             // Show the new password and confirm password fields
             newPasswordField.setVisible(true);
             confirmPasswordField.setVisible(true);
+            DONE.setVisible(true);
             // Hide the verification code field
             verificationCodeField.setVisible(false);
             smsButton.setVisible(false);
@@ -165,7 +173,7 @@ public class ForgetPassword {
             String newPassword = newPasswordField.getText();
             String confirmedPassword = confirmPasswordField.getText();
             // Check if new password and confirmed password match
-            if (newPassword.equals(confirmedPassword)) {
+            if ((newPassword.equals(confirmedPassword))&&(newPassword.length() > 8) && (newPassword.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$"))) {
                 // Change the password and redirect to the login interface
                 userService.changePassword(newPassword, emailverif.getText());
                 // Redirect to the login interface
