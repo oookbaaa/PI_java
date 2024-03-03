@@ -31,19 +31,13 @@ import java.util.ResourceBundle;
 public class userDashboardItem implements Initializable {
 
     @FXML
-    private Pane paneshow;
-    @FXML
-    private VBox feedbackItemContainer;
-    @FXML
     private AnchorPane doneAction;
     @FXML
     private Label fullNameLabel;
     @FXML
     private Button banButton;
-
     @FXML
     private Circle imageCircle;
-
     @FXML
     private Label roleLabel;
     private User user;
@@ -111,7 +105,7 @@ public class userDashboardItem implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        doneAction.setVisible(false);
+       // doneAction.setVisible(false);
 
 
     }

@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="parentd" prefHeight="693.0" prefWidth="1012.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.Dashboard">
    <children>
-      <TableView fx:id="tableView" layoutX="20.0" layoutY="71.0" prefHeight="378.0" prefWidth="968.0" stylesheets="@tableview.css">
+      <TableView fx:id="tableView" layoutX="663.0" layoutY="389.0" prefHeight="0.0" prefWidth="46.0" stylesheets="@tableview.css">
          <columns>
             <TableColumn fx:id="nomc" prefWidth="140.0" style="-fx-alignment: center;" text="NAME" />
             <TableColumn fx:id="telc" prefWidth="140.0" style="-fx-alignment: center;" text="PHONE" />
@@ -23,17 +23,17 @@
             <TableColumn fx:id="operationc" prefWidth="152.0" style="-fx-alignment: center;" text="OPERATIONS" />
          </columns>
       </TableView>
-      <ScrollPane fx:id="scroll" layoutX="11.0" layoutY="55.0" prefHeight="620.0" prefWidth="988.0">
+      <ScrollPane fx:id="scroll" layoutX="11.0" layoutY="91.0" prefHeight="586.0" prefWidth="988.0">
          <content>
-            <VBox fx:id="feedbackContentContainer" prefHeight="612.0" prefWidth="984.0" spacing="15.0" />
+            <VBox fx:id="feedbackContentContainer" prefHeight="590.0" prefWidth="984.0" spacing="15.0" />
          </content>
       </ScrollPane>
-      <JFXTextField fx:id="searchinput" cacheShape="false" centerShape="false" focusColor="#3455b1" focusTraversable="false" layoutX="433.0" layoutY="7.0" maxWidth="199.0" minWidth="194.0" onKeyPressed="#handleSearch" prefHeight="42.0" prefWidth="194.0" promptText="Search :" scaleShape="false" styleClass="codelb" stylesheets="@stylesheet.css" unFocusColor="#eeecec">
+      <JFXTextField fx:id="searchinput" cacheShape="false" centerShape="false" focusColor="#3455b1" focusTraversable="false" layoutX="433.0" layoutY="24.0" maxWidth="199.0" minWidth="194.0" onKeyPressed="#handleSearch" prefHeight="42.0" prefWidth="194.0" promptText="Search :" scaleShape="false" styleClass="codelb" stylesheets="@stylesheet.css" unFocusColor="#eeecec">
          <font>
             <Font name="Century Gothic" size="19.0" />
          </font>
       </JFXTextField>
-      <ImageView fitHeight="53.0" fitWidth="31.0" layoutX="383.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="53.0" fitWidth="31.0" layoutX="383.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/rechercher.png" />
          </image>

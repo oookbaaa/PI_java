@@ -201,6 +201,7 @@ public class Dashboard implements Initializable {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/usersDashboardItem.fxml"));
                 Parent root = fxmlLoader.load();
+               // userDashboardItem itemController = fxmlLoader.getController();
                 userDashboardItem itemController = fxmlLoader.getController();
                 itemController.setFeedBackData(u);
                 feedbackContentContainer.getChildren().add(root);

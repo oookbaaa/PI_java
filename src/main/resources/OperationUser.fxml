@@ -17,16 +17,19 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1103.0" styleClass="courses-main-content-container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.OperationUser">
     <children>
-        <AnchorPane fx:id="coursesDetailsContainer" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1102.0" styleClass="courses-details-container" stylesheets="@coursesMainPage.css">
+        <AnchorPane fx:id="coursesDetailsContainer" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1102.0" stylesheets="@coursesMainPage.css">
             <children>
-                <Label alignment="CENTER" layoutX="480.0" layoutY="14.0" styleClass="title-form" stylesheets="@addNewUser.css" text="Your Profile" />
-                <Pane layoutX="61.0" layoutY="142.0" prefHeight="411.0" prefWidth="800.0" styleClass="pane-data-details" stylesheets="@coursesMainPage.css">
+                <Label alignment="CENTER" layoutX="480.0" layoutY="14.0" styleClass="title-form" stylesheets="@addNewUser.css" text="Your Profile">
+               <font>
+                  <Font name="Ebrima Bold" size="14.0" />
+               </font></Label>
+                <Pane layoutX="47.0" layoutY="127.0" prefHeight="426.0" prefWidth="814.0" styleClass="left-menu-container" stylesheets="@styleEye.css">
                     <children>
-                        <ScrollPane hbarPolicy="NEVER" layoutX="32.0" layoutY="13.0" prefHeight="386.0" prefWidth="736.0" styleClass="one-course-scroll-pane" stylesheets="@coursesMainPage.css">
+                        <ScrollPane hbarPolicy="NEVER" layoutX="32.0" layoutY="11.0" prefHeight="411.0" prefWidth="755.0" styleClass="vbox" stylesheets="@styleEye.css">
                             <content>
-                                <VBox prefHeight="392.0" prefWidth="736.0" styleClass="one-course-details-container" stylesheets="@coursesMainPage.css">
+                                <VBox prefHeight="428.0" prefWidth="736.0" spacing="15.0" styleClass="vbox" stylesheets="@styleEye.css">
                                     <children>
-                                        <HBox alignment="CENTER_LEFT" prefHeight="71.0" prefWidth="736.0" spacing="50.0">
+                                        <HBox alignment="CENTER_LEFT" prefHeight="71.0" prefWidth="736.0" spacing="50.0" styleClass="left-menu-container" stylesheets="@styleEye.css">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
@@ -36,7 +39,7 @@
                                                         <Insets left="20.0" />
                                                     </HBox.margin>
                                                 </Label>
-                                                <Text fx:id="firstNameLabelDetail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-data" text="foulen">
+                                                <Text fx:id="firstNameLabelDetail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-data" text="foulen" translateX="-52.0">
                                                     <HBox.margin>
                                                         <Insets left="78.0" />
                                                     </HBox.margin>
@@ -48,7 +51,7 @@
                                                 <Insets />
                                             </opaqueInsets>
                                  <children>
-                                              <HBox alignment="CENTER_LEFT" prefHeight="71.0" prefWidth="736.0" spacing="50.0">
+                                              <HBox alignment="CENTER_LEFT" prefHeight="71.0" prefWidth="736.0" spacing="50.0" styleClass="left-menu-container">
                                                   <opaqueInsets>
                                                       <Insets />
                                                   </opaqueInsets>
@@ -58,7 +61,7 @@
                                                               <Insets left="20.0" />
                                                           </HBox.margin>
                                                       </Label>
-                                                      <Text fx:id="emailLabelDetail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-data" text="exemple@email.com">
+                                                      <Text fx:id="emailLabelDetail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-data" text="exemple@email.com" translateX="10.0">
                                                           <HBox.margin>
                                                               <Insets left="73.0" />
                                                           </HBox.margin>
@@ -67,7 +70,7 @@
                                               </HBox>
                                  </children>
                                         </HBox>
-                                        <HBox alignment="CENTER_LEFT" prefHeight="71.0" prefWidth="736.0" spacing="50.0">
+                                        <HBox alignment="CENTER_LEFT" prefHeight="71.0" prefWidth="736.0" spacing="50.0" styleClass="left-menu-container">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
@@ -77,14 +80,14 @@
                                                         <Insets left="20.0" />
                                                     </HBox.margin>
                                                 </Label>
-                                                <Text fx:id="numberLabelDetail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-data" text="+216---">
+                                                <Text fx:id="numberLabelDetail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-data" text="+216---" translateX="-25.0">
                                                     <HBox.margin>
                                                         <Insets />
                                                     </HBox.margin>
                                                 </Text>
                                  </children>
                                         </HBox>
-                                        <HBox alignment="CENTER_LEFT" prefHeight="71.0" prefWidth="736.0" spacing="50.0">
+                                        <HBox alignment="CENTER_LEFT" prefHeight="71.0" prefWidth="736.0" spacing="50.0" styleClass="left-menu-container">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
@@ -94,20 +97,20 @@
                                                         <Insets left="20.0" />
                                                     </HBox.margin>
                                                 </Label>
-                                                <Text fx:id="isActiveLabelDetail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-data" text="yes">
+                                                <Text fx:id="isActiveLabelDetail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-data" text="yes" translateX="3.0">
                                                     <HBox.margin>
                                                         <Insets />
                                                     </HBox.margin>
                                                 </Text>
                                  </children>
                                         </HBox>
-                                        <HBox alignment="CENTER_LEFT" prefHeight="71.0" prefWidth="736.0" spacing="50.0">
+                                        <HBox alignment="CENTER_LEFT" prefHeight="71.0" prefWidth="736.0" spacing="50.0" styleClass="left-menu-container">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
                                  <children>
                                     <Label prefHeight="35.0" prefWidth="155.0" styleClass="label-details" stylesheets="@coursesMainPage.css" text="   Adress :" />
-                                    <Text fx:id="Adressdetail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-data" text="..." wrappingWidth="140.40943336486816" />
+                                    <Text fx:id="Adressdetail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-data" text="..." translateX="12.0" wrappingWidth="140.40943336486816" />
                                  </children>
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="736.0" spacing="50.0">
@@ -121,7 +124,7 @@
                         </ScrollPane>
                     </children>
                 </Pane>
-                <Button fx:id="editUser" layoutX="874.0" layoutY="435.0" mnemonicParsing="false" onAction="#editUserBtnClicked" prefHeight="50.0" prefWidth="188.0" styleClass="edit-course-btn" stylesheets="@coursesMainPage.css" text="Edit">
+                <Button fx:id="editUser" layoutX="888.0" layoutY="578.0" mnemonicParsing="false" onAction="#editUserBtnClicked" prefHeight="50.0" prefWidth="188.0" styleClass="edit-course-btn" stylesheets="@coursesMainPage.css" text="Edit">
                     <!--                    <graphic>-->
                     <!--                        <ImageView fx:id="editCourseBtnImg" fitHeight="32.0" fitWidth="32.0" onDragDetected="#editUserBtnClicked" pickOnBounds="true" preserveRatio="true">-->
                     <!--                            <image>-->
@@ -130,7 +133,7 @@
                     <!--                        </ImageView>-->
                     <!--                    </graphic>-->
                 </Button>
-                <Button fx:id="deleteuser" layoutX="874.0" layoutY="372.0" mnemonicParsing="false" onAction="#confirmDeleteUser" prefHeight="50.0" prefWidth="188.0" styleClass="delete-course-btn" stylesheets="@coursesMainPage.css" text="Delete">
+                <Button fx:id="deleteuser" layoutX="888.0" layoutY="515.0" mnemonicParsing="false" onAction="#confirmDeleteUser" prefHeight="50.0" prefWidth="188.0" styleClass="delete-course-btn" stylesheets="@coursesMainPage.css" text="Delete">
                     <!--                    <graphic>-->
                     <!--                        <ImageView fx:id="deleteCourseBtnImg" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" styleClass="delete-course-btn-img">-->
                     <!--                            <image>-->
@@ -163,7 +166,7 @@
                         <Label fx:id="done" layoutX="13.0" layoutY="5.0" styleClass="success-msg" stylesheets="@coursesMainPage.css" text="Done !" />
                     </children>
                 </AnchorPane>
-                <ImageView fx:id="userImgContainer" fitHeight="150.0" fitWidth="165.0" layoutX="886.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="userImgContainer" fitHeight="150.0" fitWidth="165.0" layoutX="899.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
             </children>
         </AnchorPane>
         <AnchorPane fx:id="editanchorpane" prefHeight="650.0" prefWidth="1110.0" styleClass="courses-details-container" stylesheets="@coursesMainPage.css" visible="false">
@@ -256,18 +259,18 @@
                     <!--                        </ImageView>-->
                     <!--                    </graphic>-->
                 </Button>
-                <Button fx:id="editimgbutton" layoutX="750.0" layoutY="395.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="56.0" prefWidth="160.0" styleClass="choose-img_btn" stylesheets="@addNewUser.css" text="Choose image">
+                <Button fx:id="editimgbutton" layoutX="687.0" layoutY="391.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="56.0" prefWidth="160.0" styleClass="go-back-course-btn" stylesheets="@addNewUser.css" text="Choose image">
                     <font>
                         <Font size="10.0" />
                     </font>
                 </Button>
                 <Label alignment="CENTER" layoutX="543.0" layoutY="39.0" styleClass="title-form" stylesheets="@addNewUser.css" text="Edit User !" />
-                <Button fx:id="editbutton" layoutX="910.0" layoutY="575.0" mnemonicParsing="false" onAction="#editUserButton" prefHeight="56.0" prefWidth="160.0" styleClass="choose-img_btn" stylesheets="@addNewUser.css" text="Edit User">
+                <Button fx:id="editbutton" layoutX="910.0" layoutY="575.0" mnemonicParsing="false" onAction="#editUserButton" prefHeight="56.0" prefWidth="160.0" styleClass="go-back-course-btn" stylesheets="@addNewUser.css" text="Edit User">
                     <font>
                         <Font size="10.0" />
                     </font>
                 </Button>
-            <ImageView fx:id="editimguser" fitHeight="150.0" fitWidth="200.0" layoutX="730.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="editimguser" fitHeight="150.0" fitWidth="200.0" layoutX="667.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" />
                 <!--                <ImageView fx:id="editimguser" fitHeight="150.0" fitWidth="200.0" layoutX="992.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">-->
                 <!--                    <image>-->
                 <!--                        <Image url="@../../images/logo%20version%201%20(2).png" />-->
