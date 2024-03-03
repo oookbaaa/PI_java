@@ -206,7 +206,7 @@ public class ForgetPassword {
     }
 
     private String generateVerificationCode() {
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         int length = 6;
         Random random = new Random();
         StringBuilder sb = new StringBuilder();

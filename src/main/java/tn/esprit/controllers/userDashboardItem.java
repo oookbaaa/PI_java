@@ -105,7 +105,7 @@ public class userDashboardItem implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       // doneAction.setVisible(false);
+        doneAction.setVisible(false);
 
 
     }

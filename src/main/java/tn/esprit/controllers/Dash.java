@@ -66,7 +66,8 @@ public class Dash implements Initializable {
     @FXML
     private Pane paneshow;
 
-
+    @FXML
+    private Label okba;
     @FXML
     private Label dashusername;
 
@@ -91,6 +92,7 @@ public class Dash implements Initializable {
     private void btn_Mailing(ActionEvent event) throws IOException {
         AnchorPane view = FXMLLoader.load(getClass().getResource("/Mail.fxml"));
         paneshow.getChildren().setAll(view);
+        okba.setVisible(false);
     }
 
     public void makeStageDrageable(){

@@ -7,6 +7,19 @@
     -fx-background-radius: 24;
     -fx-border-color: #000000;
 }
+
+.monbouton{
+    -fx-background-color: #2f8783;
+    -fx-border-radius: 24;
+    -fx-background-radius: 24;
+    -fx-border-color: #000000;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 4, 0);
+}
+
+.monbouton:hover{
+    -fx-opacity: 0.6;
+}
+
 .img-profile-container{
     -fx-arc-height: 32;
     -fx-arc-width: 32;
@@ -197,4 +210,17 @@
 
 .vbox {
     -fx-background-color: #7bdcb5;
+}
+
+
+
+.show{
+    -fx-background-color: #7bdcb5;
+    -fx-border-color: #383737;
+    -fx-border-radius: 45;
+    -fx-background-radius: 45;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
 }

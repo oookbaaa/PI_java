@@ -37,11 +37,6 @@ public class User {
     }
 
 
-
-
-
-
-
     public User(int id, int tel, String nom, String email, String mdp, String adresse, String photo) {
         this.id = id;
         this.tel = tel;

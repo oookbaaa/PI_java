@@ -153,7 +153,7 @@
                   <Image url="@img/reduire-la-fenetre.png" />
                </image>
             </ImageView>
-            <Pane fx:id="paneshow" layoutX="13.0" layoutY="119.0" prefHeight="706.0" prefWidth="1014.0">
+            <Pane fx:id="paneshow" layoutX="1.0" layoutY="119.0" prefHeight="706.0" prefWidth="1037.0">
                <children>
                   <ImageView fitHeight="620.0" fitWidth="841.0" layoutX="95.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -171,7 +171,7 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="global-text" text="Dashboard" />
                </children>
             </HBox>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="296.0" layoutY="62.0" prefHeight="70.0" prefWidth="466.0" text="Welcome back" textFill="#7bdcb5">
+            <Label fx:id="okba" alignment="CENTER" contentDisplay="CENTER" layoutX="296.0" layoutY="62.0" prefHeight="70.0" prefWidth="466.0" text="Welcome back" textFill="#7bdcb5">
                <font>
                   <Font name="Ebrima Bold" size="48.0" />
                </font>

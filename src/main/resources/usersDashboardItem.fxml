@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<VBox fx:id="feedbackItemContainer" alignment="TOP_CENTER" prefHeight="161.0" prefWidth="845.0" styleClass="edit-btn" stylesheets="@styleEye.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.userDashboardItem">
+<VBox fx:id="feedbackItemContainer" alignment="TOP_CENTER" prefHeight="146.0" prefWidth="794.0" styleClass="show" stylesheets="@styleEye.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.userDashboardItem">
     <children>
         <HBox prefHeight="61.0" prefWidth="846.0">
             <children>
@@ -37,7 +37,7 @@
                         <Insets bottom="-10.0" right="-20.0" />
                     </padding>
                 </AnchorPane>
-                <Label fx:id="roleLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="88.0" styleClass="feedback-date" stylesheets="@dashboardAdminStyle.css">
+                <Label fx:id="roleLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="111.0" styleClass="feedback-date" stylesheets="@dashboardAdminStyle.css">
                     <HBox.margin>
                         <Insets left="50.0" top="32.0" />
                     </HBox.margin>
@@ -56,7 +56,7 @@
                 <Insets left="600.0" top="-60.0" />
             </VBox.margin>
         </Button>
-        <Button fx:id="banButton" mnemonicParsing="false" styleClass="Details-button" stylesheets="@button.css" text="Ban this User">
+        <Button fx:id="banButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="43.0" prefWidth="228.0" styleClass="Details-button" stylesheets="@button.css" text="            Ban this User">
             <VBox.margin>
                 <Insets left="-700.0" top="10.0" />
             </VBox.margin>
