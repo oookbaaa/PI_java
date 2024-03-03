@@ -2,6 +2,7 @@ package tn.esprit.controllers;
 
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,18 +11,31 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import tn.esprit.models.User;
 import tn.esprit.services.UserService;
 
 import java.io.IOException;
+import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.Random;
 
 public class ForgetPassword {
+
+    public JFXButton reset;
+    public JFXTextField confirmPasswordField;
+    public JFXTextField newPasswordField;
+    public JFXTextField verificationCodeField;
+    @FXML
+    private JFXButton smsButton;
+
+    @FXML
+    private JFXButton emailButton;
 
     @FXML
     private ImageView reduceIcon;
@@ -31,143 +45,179 @@ public class ForgetPassword {
 
     private UserService userService = new UserService();
 
-
+    private String correctVerificationCode; // Store the correct verification code here
 
     @FXML
-    private void envoyer_mdp(ActionEvent event) throws IOException {
-        try {
+    private void envoyer_mdp(ActionEvent event) throws IOException, SQLException, NoSuchAlgorithmException {
+        User user = userService.getUserByEmail(emailverif.getText());
+        System.out.println("user : " + user);
+        if (emailverif.getText().isEmpty()) {
+            // Show warning if email is empty
+            showAlert("Attention", null, "Veuillez saisir l'email.");
+            return;
+        } else if (user == null) {
+            // Show error if no account is registered with the email
+            showAlert("Attention", null, "Aucun compte n'est enrigistré avec ce mail!");
+            return;
+        } else {
+            // Generate verification code
+            correctVerificationCode = generateVerificationCode();
 
+            // Show the verification code field
+            // Hide other fields
+            newPasswordField.setVisible(false);
+            confirmPasswordField.setVisible(false);
+            verificationCodeField.setVisible(false);
 
-            User user = userService.getUserByEmail(emailverif.getText());
-            System.out.println("user : " + user);
-            if (emailverif.getText().isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Attention");
-                alert.setHeaderText(null);
-                alert.setContentText("Veuillez saisir l'email.");
-                alert.showAndWait();
-                return;
-            } else if (user == null) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Attention");
-                alert.setHeaderText(null);
-                alert.setContentText("Aucun compte n'est enrigistré avec ce mail!");
-                alert.showAndWait();
-
-            } else {
-                String verificationCode = generateVerificationCode();
-                String subject = "Verification code for changing password :";
-                String message = verificationCode ;
-                String messagesms = verificationCode + " : est votre code de verification pour changer votre mot de passe.";
-
-
-
-                // Send verification code to user
-                String number = String.valueOf(user.getTel());
-                SmsSender.sendSms(number, messagesms);
-                System.out.println(number);
-                System.out.println(messagesms);
-
-                sendVerificationEmail(user.getEmail(), message);
-
-
-                TextInputDialog verificationDialog = new TextInputDialog();
-                verificationDialog.setTitle("Changer le mot de passe");
-                verificationDialog.setHeaderText(null);
-                verificationDialog.setContentText("Code de vérification envoyé par e-mail/sms:");
-                Optional<String> enteredVerificationCode = verificationDialog.showAndWait();
-
-                if (!enteredVerificationCode.isPresent() || enteredVerificationCode.get().isEmpty()) {
-                    // Show a warning if verification code is empty
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Attention");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Veuillez saisir le code de vérification.");
-                    alert.showAndWait();
-                } else if (!enteredVerificationCode.get().equals(verificationCode)) {
-                    // Show a warning if verification code does not match
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Attention");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Code de vérification incorrect.");
-                    alert.showAndWait();
-                } else {
-                    // Continue if verification code is correct
-                    TextInputDialog passwordDialog = new TextInputDialog();
-                    passwordDialog.setTitle("Changer le mot de passe");
-                    passwordDialog.setHeaderText(null);
-                    passwordDialog.setContentText("Nouveau mot de passe:");
-                    Optional<String> newPassword = passwordDialog.showAndWait();
-
-                    if (newPassword.isPresent()) {
-                        String newPasswordValue = newPassword.get();
-                        // Validate password criteria
-                        if (newPasswordValue.length() < 8 || !newPasswordValue.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$")) {
-                            // Show a warning if password does not meet criteria
-                            Alert alert = new Alert(Alert.AlertType.WARNING);
-                            alert.setTitle("Attention");
-                            alert.setHeaderText(null);
-                            alert.setContentText("Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule et un chiffre.");
-                            alert.showAndWait();
-                            return;
-                        } else {
-                            // Continue if password criteria are met
-                            TextInputDialog confirmDialog = new TextInputDialog();
-                            confirmDialog.setTitle("Changer le mot de passe");
-                            confirmDialog.setHeaderText(null);
-                            confirmDialog.setContentText("Confirmer le mot de passe:");
-                            Optional<String> confirmedPassword = confirmDialog.showAndWait();
-
-                            if (confirmedPassword.isPresent() && newPasswordValue.equals(confirmedPassword.get())) {
-                                // Change password if confirmed password matches
-                                userService.changePassword(newPasswordValue, emailverif.getText());
-
-                                String body = "Good morning Mr/Ms " + user.getNom() + " ; "
-                                        + "Your password has been changed Successfully.";
-                                Mailing mailing = new Mailing();
-                                mailing.sendMailex(user.getEmail(), subject, body);
-
-
-                                SmsSender.sendSms(String.valueOf(user.getTel()), body);
-
-                                emailverif.setVisible(false);
-                                System.out.println("Mot de passe changé avec succès");
-                                showAlert("Attention", null, "Mot de passe changé avec succès");
-
-
-                                Parent root = FXMLLoader.load(getClass().getResource("/MainUI.fxml"));
-                                emailverif.getScene().setRoot(root);
-                            } else {
-                                showAlert("Attention", null, "Les mots de passe ne correspondent pas");
-                                System.out.println("Les mots de passe ne correspondent pas");
-                            }
-                        }
-                    } else {
-                        System.out.println("Utilisateur introuvable");
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
+            // Hide reset button and show SMS and Email buttons
+            reset.setVisible(false);
+            smsButton.setVisible(true);
+            emailButton.setVisible(true);
         }
     }
 
+    @FXML
+    private void sendSMS(ActionEvent event) {
+        try {
+            // Retrieve user information
+            User user = userService.getUserByEmail(emailverif.getText());
 
+            // Generate verification code
+            String verificationCode = generateVerificationCode();
+            String messagesms = verificationCode + " : est votre code de verification pour changer votre mot de passe.";
 
+            // Send verification code via SMS
+            String number = String.valueOf(user.getTel());
+            SmsSender.sendSms(number, messagesms);
+
+            // Store the correct verification code
+            correctVerificationCode = verificationCode;
+            verificationCodeField.setVisible(true);
+
+            // Show success message
+            showAlert("Success", null, "Verification code sent via SMS.");
+        } catch (IOException e) {
+            showAlert("Error", null, "Failed to send SMS.");
+        }
+    }
+
+    @FXML
+    private void sendEmail(ActionEvent event) {
+        try {
+            // Retrieve user information
+            User user = userService.getUserByEmail(emailverif.getText());
+
+            // Generate verification code
+            String verificationCode = generateVerificationCode();
+            String subject = "Verification code for changing password :";
+            String message = verificationCode;
+
+            // Send verification code via email
+            sendVerificationEmail(user.getEmail(), message);
+
+            // Store the correct verification code
+            correctVerificationCode = verificationCode;
+            verificationCodeField.setVisible(true);
+
+            // Show success message
+            showAlert("Success", null, "Verification code sent via email.");
+        } catch (IOException | SQLException | NoSuchAlgorithmException e) {
+            showAlert("Error", null, "Failed to send email.");
+        }
+    }
+
+    @FXML
+    private void verifyCode(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+
+            String enteredVerificationCode = verificationCodeField.getText();
+            // Check if the verification code field is empty
+            if (enteredVerificationCode.isEmpty()) {
+                // Show a warning message to fill the verification code
+                showAlert("Attention", null, "Veuillez saisir le code de vérification.");
+            } else {
+                // Call the verifyCode method to proceed with verification
+                verifyCode();
+            }
+        }
+    }
+
+    private void verifyCode() {
+        String enteredVerificationCode = verificationCodeField.getText();
+        // Validate entered verification code
+        if (enteredVerificationCode.equals(correctVerificationCode)) {
+            // Show the new password and confirm password fields
+            newPasswordField.setVisible(true);
+            confirmPasswordField.setVisible(true);
+            // Hide the verification code field
+            verificationCodeField.setVisible(false);
+            smsButton.setVisible(false);
+            emailButton.setVisible(false);
+        } else {
+            verificationCodeField.setStyle("-fx-border-color: red;");
+        }
+    }
+
+    @FXML
+    private void changePassword(KeyEvent event) throws SQLException, NoSuchAlgorithmException, IOException {
+        if (event.getCode() == KeyCode.ENTER) {
+
+            String newPassword = newPasswordField.getText();
+            String confirmedPassword = confirmPasswordField.getText();
+            // Check if new password and confirmed password match
+            if (newPassword.equals(confirmedPassword)) {
+                // Change the password and redirect to the login interface
+                userService.changePassword(newPassword, emailverif.getText());
+                // Redirect to the login interface
+                // For example:
+                Parent root = FXMLLoader.load(getClass().getResource("/MainUi.fxml"));
+                emailverif.getScene().setRoot(root);
+            } else {
+                confirmPasswordField.setStyle("-fx-border-color: red;");
+            }
+        }
+    }
+
+    @FXML
+    private void close_app(MouseEvent event) {
+        System.exit(0);
+    }
+
+    @FXML
+    private void back_to_menu(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/MainUI.fxml"));
+        emailverif.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void reduceWindow(MouseEvent event) {
+        // Get the stage from any node in the scene
+        Stage stage = (Stage) reduceIcon.getScene().getWindow();
+        // Minimize the stage
+        stage.setIconified(true);
+    }
+
+    private String generateVerificationCode() {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        int length = 6;
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            int index = random.nextInt(characters.length());
+            sb.append(characters.charAt(index));
+        }
+        return sb.toString();
+    }
 
     private void showAlert(String title, String header, String content) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle(title);
-                    alert.setHeaderText(header);
-                    alert.setContentText(content);
-                    alert.showAndWait();
-                }
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
 
-
-
-    private void sendVerificationEmail(String email, String code) {
+    private void sendVerificationEmail(String email, String code) throws IOException, SQLException, NoSuchAlgorithmException {
         User user = userService.getUserByEmail(email);
         String subject = "Verification code for password reset :";
         String body = "<html><head><style>" +
@@ -191,59 +241,5 @@ public class ForgetPassword {
                 "</div></body></html>";
         Mailing mailing = new Mailing();
         mailing.sendMailex(email, subject, body);
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @FXML
-    private void close_app(MouseEvent event) {
-        System.exit(0);
-    }
-    @FXML
-    private void back_to_menu (MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/MainUI.fxml"));
-        emailverif.getScene().setRoot(root);
-    }
-    @FXML
-    private void reduceWindow(MouseEvent event) {
-        // Get the stage from any node in the scene
-        Stage stage = (Stage) reduceIcon.getScene().getWindow();
-        // Minimize the stage
-        stage.setIconified(true);
-    }
-    private String generateVerificationCode() {
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        int length = 6;
-        Random random = new Random();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < length; i++) {
-            int index = random.nextInt(characters.length());
-            sb.append(characters.charAt(index));
-        }
-        String code = sb.toString();
-        return code;
-    }
-
 }
