@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.ft.controllers.AjouterBorne">
+   <children>
+      <TextField fx:id="descriptionTF" layoutX="121.0" layoutY="153.0" promptText="Description" />
+      <TextField fx:id="adresseTF" layoutX="121.0" layoutY="277.0" promptText="Adresse" />
+      <Button layoutX="138.0" layoutY="395.0" mnemonicParsing="false" onAction="#AjouterBorne" styleClass="btn" stylesheets="@style.css" text="Ajouter" />
+      <Button layoutX="677.0" layoutY="92.0" mnemonicParsing="false" onAction="#AfficherBorne" styleClass="btn" stylesheets="@style.css" text="Afficher" />
+      <ComboBox fx:id="emplacement" layoutX="121.0" layoutY="332.0" prefWidth="150.0" promptText="Emplacement" />
+      <AnchorPane prefHeight="86.0" prefWidth="757.0" styleClass="header" stylesheets="@style.css">
+         <children>
+            <Label alignment="CENTER" layoutX="155.0" layoutY="15.0" prefHeight="56.0" prefWidth="446.0" text="AJOUTER BORNES" textFill="WHITE">
+               <font>
+                  <Font name="Cambria" size="45.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Separator layoutX="281.0" layoutY="431.0" prefHeight="1.0" prefWidth="446.0" />
+      <Separator layoutX="527.0" layoutY="122.0" orientation="VERTICAL" prefHeight="239.0" prefWidth="5.0" />
+      <AnchorPane layoutX="542.0" layoutY="147.0" prefHeight="200.0" prefWidth="194.0" stylesheets="@style.css">
+         <children>
+            <ImageView fx:id="ImageView" fitHeight="191.0" fitWidth="187.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+         <styleClass>
+            <String fx:value="white-bg" />
+            <String fx:value="radius" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </AnchorPane>
+      <Button layoutX="603.0" layoutY="365.0" mnemonicParsing="false" onAction="#ImportButton" styleClass="btn" stylesheets="@style.css" text="Importer" />
+      <ComboBox fx:id="etaTF" layoutX="121.0" layoutY="214.0" prefWidth="150.0" promptText="Etat" />
+      <Button layoutX="330.0" layoutY="240.0" mnemonicParsing="false" onAction="#openmap" prefHeight="30.0" prefWidth="135.0" styleClass="btn" stylesheets="@style.css" text="Ouvrir le carte" />
+      <Label layoutX="36.0" layoutY="157.0" text="Description" />
+      <Label layoutX="52.0" layoutY="218.0" text="Etat" />
+      <Label layoutX="41.0" layoutY="281.0" text="Adresse" />
+      <Label layoutX="26.0" layoutY="338.0" text="Emplacement" />
+   </children>
+</AnchorPane>
