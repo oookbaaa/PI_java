@@ -161,7 +161,7 @@
                      </image>
                   </ImageView>
                </children></Pane>
-            <HBox alignment="CENTER" layoutX="28.0" layoutY="13.0" prefHeight="59.0" prefWidth="200.0" spacing="20.0" stylesheets="@../../../../../../../Downloads/projetpidevEya/projetpidev/src/main/resources/style/styleEye.css">
+            <HBox alignment="CENTER" layoutX="28.0" layoutY="13.0" prefHeight="59.0" prefWidth="200.0" spacing="20.0" stylesheets="@styleEye.css">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>

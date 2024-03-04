@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -39,6 +40,8 @@ public class OperationUser implements Initializable {
     @FXML
     private AnchorPane coursesDetailsContainer;
 
+    @FXML
+    private AnchorPane userdash;
     @FXML
     private ImageView deleteCourseBtnImg;
 
@@ -202,6 +205,8 @@ public class OperationUser implements Initializable {
 
       String photo = editimguser.getImage().getUrl();
 
+        //String tof  = loggedInUser.getPhoto();
+
         UserService serv = new UserService();
 
         User editeduser = new User(id, tel, nom, email, adresse, photo);
@@ -215,6 +220,10 @@ public class OperationUser implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("User updated successfully");
         alert.showAndWait();
+        editanchorpane.setVisible(false);
+        coursesDetailsContainer.setVisible(true);
+        userdash.setVisible(true);
+
 
     }
 

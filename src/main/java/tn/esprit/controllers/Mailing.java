@@ -117,7 +117,7 @@ public class Mailing {
         }
     }
     public void sendMailex(String toEmail, String subject, String body) {
-        String fromEmail = "evh0hve@gmail.com";
+        String fromEmail = "EVH TEAM";
         String password = "cffw brbd rtcv cxal";
 
         Properties props = new Properties();

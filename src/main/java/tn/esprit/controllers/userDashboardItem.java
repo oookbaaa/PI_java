@@ -40,23 +40,46 @@ public class userDashboardItem implements Initializable {
     private Circle imageCircle;
     @FXML
     private Label roleLabel;
+    @FXML
+    private Label statuslab;
     private User user;
 
     public void setFeedBackData(User user){
-        imageCircle.setFill(new ImagePattern(
-                new Image(user.getPhoto().replace("\\","/"))
-        ));
+        imageCircle.setFill(new ImagePattern(new Image(user.getPhoto().replace("\\","/"))));
         fullNameLabel.setText(user.getNom());
         roleLabel.setText(user.getRole());
         this.user = user;
+        if(user.getStatus().equals(Status.ACTIVE)) {
+            banButton.setText(" Ban user");
+            statuslab.setText("ACTIVE");
+            statuslab.setStyle("-fx-text-fill: green;");
+        }
+        else {
+            banButton.setText(" Unban user");
+            statuslab.setText("INACTIVE");
+            statuslab.setStyle("-fx-text-fill: red;");
+        }
         banButton.setOnAction(event ->
         {
             try {
-                banUser(user.getId(),false);
+                if(user.getStatus().equals(Status.ACTIVE)) {
+                    banButton.setText(" Unban user");
+                    statuslab.setText("INACTIVE");
+                    statuslab.setStyle("-fx-text-fill: red;");
+
+                }
+                else {
+                    banButton.setText(" Ban user");
+                    statuslab.setText("ACTIVE");
+                    statuslab.setStyle("-fx-text-fill: green;");
+                }
+                banUser();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
         });
+
+
 
     }
 
@@ -75,7 +98,7 @@ public class userDashboardItem implements Initializable {
 
     }
     @FXML
-    public void banUser(int id,boolean b) throws SQLException {
+    public void banUser() throws SQLException {
 
         UserService usr = new UserService();
         Status currentUserState = user.getStatus();
@@ -106,6 +129,7 @@ public class userDashboardItem implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         doneAction.setVisible(false);
+
 
 
     }

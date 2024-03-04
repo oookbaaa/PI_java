@@ -54,6 +54,8 @@ public class Home {
 
     User loggedInUser = SessionManager.getSession(SessionManager.getLastSessionId());
 
+
+
     @FXML
     private void initialize() {
 

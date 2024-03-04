@@ -27,6 +27,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import tn.esprit.models.User;
 import tn.esprit.services.UserService;
+import tn.esprit.utils.SessionManager;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -136,8 +137,9 @@ public void HidePasswordOnAction(KeyEvent event) {
             else{
                 LoginMessagelabel.setText("Invalid email or password.");
             }
+        User loggedInUser = SessionManager.getSession(SessionManager.getLastSessionId());
 
-            openWelcomeWindow(user.getNom());
+            openWelcomeWindow(loggedInUser.getNom());
     }
     private void openWelcomeWindow(String username) {
         try {

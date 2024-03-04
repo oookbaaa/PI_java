@@ -11,13 +11,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="614.0" prefWidth="965.0" styleClass="container" stylesheets="@styleEye.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.Mailing">
+<AnchorPane prefHeight="706.0" prefWidth="1037.0" styleClass="container" stylesheets="@styleEye.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.Mailing">
 <children>
-    <Text fill="#2f8783" layoutX="300.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipient's Email:" wrappingWidth="189.321044921875">
+    <Text fill="#2f8783" layoutX="41.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipient's Email:" wrappingWidth="189.321044921875">
          <font>
             <Font name="Ebrima Bold" size="18.0" />
          </font></Text>
-    <TextField fx:id="txtRecipientEmail" layoutX="300.0" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="400.0" stylesheets="@styleEye.css">
+    <TextField fx:id="txtRecipientEmail" layoutX="41.0" layoutY="174.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="467.0" stylesheets="@styleEye.css">
          <effect>
             <InnerShadow>
                <color>
@@ -25,11 +25,11 @@
                </color>
             </InnerShadow>
          </effect></TextField>
-    <Text fill="#2f8783" layoutX="300.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subject:" wrappingWidth="189.321044921875">
+    <Text fill="#2f8783" layoutX="41.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subject:" wrappingWidth="189.321044921875">
          <font>
             <Font name="Ebrima Bold" size="18.0" />
          </font></Text>
-    <TextField fx:id="txtSubject" layoutX="300.0" layoutY="217.0" prefHeight="30.0" prefWidth="400.0" stylesheets="@styleEye.css">
+    <TextField fx:id="txtSubject" layoutX="41.0" layoutY="251.0" prefHeight="30.0" prefWidth="467.0" stylesheets="@styleEye.css">
          <effect>
             <InnerShadow>
                <color>
@@ -37,11 +37,11 @@
                </color>
             </InnerShadow>
          </effect></TextField>
-    <Text fill="#2f8783" layoutX="228.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message Body:">
+    <Text fill="#2f8783" layoutX="39.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message Body:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Text>
-    <TextArea fx:id="txtBody" layoutX="230.0" layoutY="319.0" prefHeight="180.0" prefWidth="550.0" styleClass="text-area" stylesheets="@styleEye.css">
+    <TextArea fx:id="txtBody" layoutX="41.0" layoutY="352.0" prefHeight="263.0" prefWidth="628.0" styleClass="text-area" stylesheets="@styleEye.css">
          <font>
             <Font name="Ebrima" size="14.0" />
          </font>
@@ -52,17 +52,27 @@
                </color>
             </InnerShadow>
          </effect></TextArea>
-    <Button fx:id="btnSend" layoutX="799.0" layoutY="543.0" mnemonicParsing="false" onMouseClicked="#sendEmail" prefHeight="46.0" prefWidth="141.0" styleClass="monbouton" stylesheets="@styleEye.css" text="       Send Email" />
-      <Button layoutX="443.0" layoutY="500.0" mnemonicParsing="false" onMouseClicked="#addAttachment" prefHeight="27.0" prefWidth="116.0" styleClass="monbouton" stylesheets="@styleEye.css" text="     Add file" />
-      <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="452.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+    <Button fx:id="btnSend" layoutX="881.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#sendEmail" prefHeight="46.0" prefWidth="141.0" styleClass="monbouton" stylesheets="@styleEye.css" text="       Send Email" />
+      <Button layoutX="548.0" layoutY="583.0" mnemonicParsing="false" onMouseClicked="#addAttachment" prefHeight="27.0" prefWidth="116.0" styleClass="monbouton" stylesheets="@styleEye.css" text="     Add file" />
+      <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="564.0" layoutY="586.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/attach-file.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="813.0" layoutY="551.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="895.0" layoutY="653.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/paper.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="452.0" fitWidth="577.0" layoutX="462.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/mil.png" />
+         </image>
+      </ImageView>
+      <Text fill="#2f8783" layoutX="11.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="            REPORT  :" wrappingWidth="182.92105102539062">
+         <font>
+            <Font name="Candara Bold" size="32.0" />
+         </font>
+      </Text>
 </children>
 </AnchorPane>

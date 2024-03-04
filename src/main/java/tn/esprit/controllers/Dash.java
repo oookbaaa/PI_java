@@ -80,6 +80,7 @@ public class Dash implements Initializable {
         User loggedInUser = SessionManager.getSession(SessionManager.getLastSessionId());
         profileImg.setFill(new ImagePattern(new Image(loggedInUser.getPhoto())));
         dashusername.setText(loggedInUser.getNom());
+        okba.setVisible(true);
 
     }
     @FXML
