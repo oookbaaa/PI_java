@@ -108,7 +108,7 @@
 
                                       </Pane>
 
-                        <JFXButton fx:id="btn_report" layoutX="18.0" layoutY="280.0" prefHeight="53.0" prefWidth="248.0" styleClass="menu-btn" stylesheets="@styleEye.css" text="          Report">
+                        <JFXButton fx:id="btn_stat" layoutX="18.0" layoutY="280.0" onAction="#btn_stat" prefHeight="53.0" prefWidth="248.0" styleClass="menu-btn" stylesheets="@styleEye.css" text="          Stat">
 
                             <graphic>
 

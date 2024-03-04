@@ -95,6 +95,13 @@ public class Dash implements Initializable {
         paneshow.getChildren().setAll(view);
         okba.setVisible(false);
     }
+    @FXML
+    private void btn_stat(ActionEvent event) throws IOException {
+        AnchorPane view = FXMLLoader.load(getClass().getResource("/Stat.fxml"));
+        paneshow.getChildren().setAll(view);
+        okba.setVisible(false);
+    }
+
 
     public void makeStageDrageable(){
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -141,7 +148,22 @@ public class Dash implements Initializable {
     }
 
 
+    public void stats(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Stat.fxml"));
+        Parent root = loader.load();
 
+        // Create a new stage
+        Stage stage = new Stage();
+        stage.setTitle("Statistics"); // Set the title of the new stage
+
+        // Set the scene to the stage
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
+        // Show the new stage
+        stage.show();
+
+    }
 
 
 
