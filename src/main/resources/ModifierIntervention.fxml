@@ -11,22 +11,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.ft.controllers.ModifierIntervention">
+<AnchorPane prefHeight="827.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.ft.controllers.ModifierIntervention">
     <children>
-        <AnchorPane prefHeight="86.0" prefWidth="757.0" styleClass="header" stylesheets="@style.css">
+        <AnchorPane prefHeight="86.0" prefWidth="757.0" styleClass="left-menu-container" stylesheets="@style.css">
             <children>
-                <Label alignment="CENTER" layoutX="70.0" layoutY="15.0" prefHeight="56.0" prefWidth="751.0" text="MODIFIER INTERVENTION" textFill="WHITE">
+                <Label alignment="CENTER" layoutX="70.0" layoutY="15.0" prefHeight="100.0" prefWidth="1320.0" text="MODIFIER INTERVENTION" textFill="WHITE">
                     <font>
                         <Font name="Cambria" size="41.0" />
                     </font>
                 </Label>
             </children>
         </AnchorPane>
-        <Separator layoutX="281.0" layoutY="431.0" prefHeight="1.0" prefWidth="446.0" />
-        <Separator layoutX="527.0" layoutY="122.0" orientation="VERTICAL" prefHeight="239.0" prefWidth="5.0" />
-        <AnchorPane layoutX="542.0" layoutY="147.0" prefHeight="200.0" prefWidth="194.0" stylesheets="@style.css">
+        <Separator layoutX="199.0" layoutY="718.0" prefHeight="0.0" prefWidth="982.0" />
+        <Separator layoutX="878.0" layoutY="266.0" orientation="VERTICAL" prefHeight="365.0" prefWidth="16.0" />
+        <AnchorPane layoutX="955.0" layoutY="180.0" prefHeight="396.0" prefWidth="372.0" stylesheets="@style.css">
             <children>
-                <ImageView fx:id="ImageView" fitHeight="191.0" fitWidth="187.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="ImageView" fitHeight="389.0" fitWidth="372.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
             </children>
             <styleClass>
                 <String fx:value="white-bg" />
@@ -34,16 +34,28 @@
                 <String fx:value="shadow" />
             </styleClass>
         </AnchorPane>
-        <Button layoutX="603.0" layoutY="365.0" mnemonicParsing="false" onAction="#ImportButton" styleClass="btn" stylesheets="@style.css" text="Importer" />
-        <ComboBox fx:id="bornes" layoutX="182.0" layoutY="147.0" prefWidth="150.0" promptText="Bornes" />
-        <TextField fx:id="type" layoutX="183.0" layoutY="218.0" promptText="type" />
-        <ComboBox fx:id="emp" layoutX="182.0" layoutY="277.0" prefWidth="150.0" promptText="employé?" />
-        <DatePicker fx:id="date" layoutX="171.0" layoutY="338.0" promptText="Date" />
-        <Button layoutX="171.0" layoutY="380.0" mnemonicParsing="false" onAction="#ajouterIntervention" styleClass="btn" stylesheets="@style.css" text="Modifier" />
-      <Label layoutX="97.0" layoutY="151.0" text="Borne:" />
-      <Label layoutX="97.0" layoutY="222.0" text="Type:" />
-      <Label layoutX="95.0" layoutY="281.0" text="Employé:" />
-      <Label layoutX="103.0" layoutY="342.0" text="Date:" />
+        <Button layoutX="1083.0" layoutY="584.0" mnemonicParsing="false" onAction="#ImportButton" prefHeight="57.0" prefWidth="149.0" styleClass="ajout-btn" stylesheets="@style.css" text="Importer" />
+        <ComboBox fx:id="bornes" layoutX="364.0" layoutY="287.0" prefHeight="50.0" prefWidth="360.0" promptText="Bornes" />
+        <TextField fx:id="type" layoutX="365.0" layoutY="358.0" prefHeight="50.0" prefWidth="360.0" promptText="type" />
+        <ComboBox fx:id="emp" layoutX="364.0" layoutY="417.0" prefHeight="50.0" prefWidth="360.0" promptText="employé?" />
+        <DatePicker fx:id="date" layoutX="364.0" layoutY="478.0" prefHeight="50.0" prefWidth="360.0" promptText="Date" />
+        <Button layoutX="426.0" layoutY="580.0" mnemonicParsing="false" onAction="#ajouterIntervention" prefHeight="63.0" prefWidth="129.0" styleClass="ajout-btn" stylesheets="@style.css" text="Modifier" />
+      <Label layoutX="233.0" layoutY="291.0" text="Borne:">
+         <font>
+            <Font name="Ebrima" size="24.0" />
+         </font></Label>
+      <Label layoutX="233.0" layoutY="362.0" text="Type:">
+         <font>
+            <Font name="Ebrima" size="24.0" />
+         </font></Label>
+      <Label layoutX="231.0" layoutY="421.0" text="Employé:">
+         <font>
+            <Font name="Ebrima" size="24.0" />
+         </font></Label>
+      <Label layoutX="234.0" layoutY="482.0" text="Date:">
+         <font>
+            <Font name="Ebrima" size="24.0" />
+         </font></Label>
 
     </children>
 </AnchorPane>

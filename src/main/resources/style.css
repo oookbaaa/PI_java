@@ -78,3 +78,64 @@
     -fx-border-color: black; /* Couleur de la bordure */
     -fx-border-width: 2px; /* Largeur de la bordure */
 }
+
+
+.menu-btn{
+    -fx-background-color: rgba(255, 255, 255, 0.56);
+    -fx-border-radius: 24;
+    -fx-background-radius: 24;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 4, 0);
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-style: solid;
+    -fx-border-color: #0FFF50;
+}
+.menu-btn:hover{
+    -fx-opacity: 0.6;
+}
+
+
+.left-menu-container{
+    -fx-background-color: #7bdcb5;
+    -fx-border-radius: 24;
+    -fx-background-radius: 24;
+    -fx-border-color: #000000;
+}
+.container{
+    -fx-background-color: #ffffff;
+}
+.ajout-btn{
+    -fx-background-color: #7bd159;
+    -fx-border-radius: 24;
+    -fx-background-radius: 24;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 4, 0);
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+.ajout-btn:hover{
+    -fx-opacity: 0.6;
+}
+
+.scroll-pane{
+    -fx-background-color: #ffffff;
+}
+.scroll-pane .scroll-bar:vertical{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 2px;
+}
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: #7bd159;
+}
+.scroll-pane .scroll-bar:vertical .thumb:hover {
+    -fx-opacity: 0.6;
+}
+.scroll-pane .scroll-bar:vertical .increment-button,
+.scroll-pane .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+}

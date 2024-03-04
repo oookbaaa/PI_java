@@ -10,27 +10,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.ft.controllers.AjouterBorne">
+<AnchorPane prefHeight="827.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.ft.controllers.AjouterBorne">
    <children>
-      <TextField fx:id="descriptionTF" layoutX="121.0" layoutY="153.0" promptText="Description" />
-      <TextField fx:id="adresseTF" layoutX="121.0" layoutY="277.0" promptText="Adresse" />
-      <Button layoutX="138.0" layoutY="395.0" mnemonicParsing="false" onAction="#AjouterBorne" styleClass="btn" stylesheets="@style.css" text="Ajouter" />
-      <Button layoutX="677.0" layoutY="92.0" mnemonicParsing="false" onAction="#AfficherBorne" styleClass="btn" stylesheets="@style.css" text="Afficher" />
-      <ComboBox fx:id="emplacement" layoutX="121.0" layoutY="332.0" prefWidth="150.0" promptText="Emplacement" />
-      <AnchorPane prefHeight="86.0" prefWidth="757.0" styleClass="header" stylesheets="@style.css">
+      <TextField fx:id="descriptionTF" layoutX="269.0" layoutY="234.0" prefHeight="50.0" prefWidth="360.0" promptText="Description">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="adresseTF" layoutX="273.0" layoutY="393.0" prefHeight="50.0" prefWidth="360.0" promptText="Adresse" />
+      <Button layoutX="402.0" layoutY="593.0" mnemonicParsing="false" onAction="#AjouterBorne" prefHeight="63.0" prefWidth="129.0" styleClass="ajout-btn" stylesheets="@style.css" text="Ajouter" />
+      <Button layoutX="1085.0" layoutY="114.0" mnemonicParsing="false" onAction="#AfficherBorne" prefHeight="51.0" prefWidth="185.0" styleClass="ajout-btn" stylesheets="@style.css" text="Afficher" />
+      <ComboBox fx:id="emplacement" layoutX="271.0" layoutY="470.0" prefHeight="50.0" prefWidth="360.0" promptText="Emplacement" />
+      <AnchorPane prefHeight="100.0" prefWidth="1320.0" styleClass="left-menu-container" stylesheets="@style.css">
          <children>
-            <Label alignment="CENTER" layoutX="155.0" layoutY="15.0" prefHeight="56.0" prefWidth="446.0" text="AJOUTER BORNES" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="426.0" layoutY="21.0" prefHeight="56.0" prefWidth="446.0" text="AJOUTER BORNES" textFill="WHITE">
                <font>
                   <Font name="Cambria" size="45.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Separator layoutX="281.0" layoutY="431.0" prefHeight="1.0" prefWidth="446.0" />
-      <Separator layoutX="527.0" layoutY="122.0" orientation="VERTICAL" prefHeight="239.0" prefWidth="5.0" />
-      <AnchorPane layoutX="542.0" layoutY="147.0" prefHeight="200.0" prefWidth="194.0" stylesheets="@style.css">
+      <Separator layoutX="112.0" layoutY="711.0" prefHeight="9.0" prefWidth="1080.0" />
+      <Separator layoutX="872.0" layoutY="227.0" orientation="VERTICAL" prefHeight="383.0" prefWidth="11.0" />
+      <AnchorPane layoutX="917.0" layoutY="189.0" prefHeight="396.0" prefWidth="372.0" stylesheets="@style.css">
          <children>
-            <ImageView fx:id="ImageView" fitHeight="191.0" fitWidth="187.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ImageView" fitHeight="389.0" fitWidth="372.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
          </children>
          <styleClass>
             <String fx:value="white-bg" />
@@ -38,12 +41,24 @@
             <String fx:value="shadow" />
          </styleClass>
       </AnchorPane>
-      <Button layoutX="603.0" layoutY="365.0" mnemonicParsing="false" onAction="#ImportButton" styleClass="btn" stylesheets="@style.css" text="Importer" />
-      <ComboBox fx:id="etaTF" layoutX="121.0" layoutY="214.0" prefWidth="150.0" promptText="Etat" />
-      <Button layoutX="330.0" layoutY="240.0" mnemonicParsing="false" onAction="#openmap" prefHeight="30.0" prefWidth="135.0" styleClass="btn" stylesheets="@style.css" text="Ouvrir le carte" />
-      <Label layoutX="36.0" layoutY="157.0" text="Description" />
-      <Label layoutX="52.0" layoutY="218.0" text="Etat" />
-      <Label layoutX="41.0" layoutY="281.0" text="Adresse" />
-      <Label layoutX="26.0" layoutY="338.0" text="Emplacement" />
+      <Button layoutX="1036.0" layoutY="591.0" mnemonicParsing="false" onAction="#ImportButton" prefHeight="57.0" prefWidth="149.0" styleClass="ajout-btn" stylesheets="@style.css" text="Importer" />
+      <ComboBox fx:id="etaTF" layoutX="272.0" layoutY="311.0" prefHeight="50.0" prefWidth="360.0" promptText="Etat" />
+      <Button layoutX="675.0" layoutY="305.0" mnemonicParsing="false" onAction="#openmap" prefHeight="63.0" prefWidth="183.0" styleClass="ajout-btn" stylesheets="@style.css" text="Ouvrir le carte" />
+      <Label layoutX="88.0" layoutY="241.0" prefHeight="26.0" prefWidth="149.0" text="Description">
+         <font>
+            <Font name="Ebrima" size="24.0" />
+         </font></Label>
+      <Label layoutX="95.0" layoutY="321.0" text="Etat">
+         <font>
+            <Font name="Ebrima" size="24.0" />
+         </font></Label>
+      <Label layoutX="95.0" layoutY="396.0" text="Adresse">
+         <font>
+            <Font name="Ebrima" size="24.0" />
+         </font></Label>
+      <Label layoutX="94.0" layoutY="476.0" text="Emplacement">
+         <font>
+            <Font name="Ebrima" size="24.0" />
+         </font></Label>
    </children>
 </AnchorPane>
