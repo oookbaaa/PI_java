@@ -55,7 +55,7 @@
 
                         </JFXButton>
 
-                        <JFXButton fx:id="btn_workbench11" layoutX="19.0" layoutY="210.0" onAction="#btn_Mailing" prefHeight="53.0" prefWidth="248.0" styleClass="menu-btn" stylesheets="@styleEye.css" text="     Send mail">
+                        <JFXButton fx:id="btn_workbench11" layoutX="19.0" layoutY="210.0" onAction="#btn_Mailing" prefHeight="53.0" prefWidth="248.0" styleClass="menu-btn" stylesheets="@styleEye.css" text="      Send mail">
 
                             <graphic>
 
@@ -108,13 +108,13 @@
 
                                       </Pane>
 
-                        <JFXButton fx:id="btn_stat" layoutX="18.0" layoutY="280.0" onAction="#btn_stat" prefHeight="53.0" prefWidth="248.0" styleClass="menu-btn" stylesheets="@styleEye.css" text="          Stat">
+                        <JFXButton fx:id="btn_stat" layoutX="18.0" layoutY="280.0" onAction="#btn_stat" prefHeight="53.0" prefWidth="248.0" styleClass="menu-btn" stylesheets="@styleEye.css" text="      Statistics">
 
                             <graphic>
 
                                 <ImageView fitHeight="40.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/liste.png" />
+                              <Image url="@img/pie-chart.png" />
                            </image></ImageView>
 
                             </graphic>
