@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -19,13 +20,15 @@ import tn.esprit.models.User;
 import tn.esprit.services.UserService;
 
 import java.io.IOException;
+import java.net.URL;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.Random;
+import java.util.ResourceBundle;
 
-public class ForgetPassword {
+public class ForgetPassword implements Initializable {
     @FXML
     private JFXButton DONE;
     public JFXButton reset;
@@ -48,6 +51,22 @@ public class ForgetPassword {
     private UserService userService = new UserService();
 
     private String correctVerificationCode; // Store the correct verification code here
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        verificationCodeField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("[A-Z0-9]*")) {
+                verificationCodeField.setText(newValue.replaceAll("[^A-Z0-9]", ""));
+            }
+
+            if (verificationCodeField.getText().length() > 6) {
+                String limitedText = verificationCodeField.getText().substring(0, 6);
+                verificationCodeField.setText(limitedText);
+            }
+
+        });
+
+
+    }
 
     @FXML
     private void envoyer_mdp(ActionEvent event) throws IOException, SQLException, NoSuchAlgorithmException {
@@ -134,7 +153,7 @@ public class ForgetPassword {
     }
 
     @FXML
-    private void verifyCode(KeyEvent event) {
+    private void verifyCode( KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
 
             String enteredVerificationCode = verificationCodeField.getText();

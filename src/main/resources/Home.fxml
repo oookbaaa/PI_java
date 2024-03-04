@@ -31,7 +31,7 @@
                         </Pane>
                         <Label fx:id="dashusername" layoutX="79.0" layoutY="18.0" prefHeight="44.0" prefWidth="118.0" text="Label">
                            <font>
-                              <Font size="24.0" />
+                              <Font name="Ebrima Bold" size="18.0" />
                            </font>
                         </Label>
                      </children>
@@ -61,9 +61,9 @@
                         <Font size="18.0" />
                      </font>
                   </JFXButton>
-                  <ImageView fitHeight="291.0" fitWidth="262.0" layoutX="-9.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="287.0" fitWidth="266.0" layoutX="8.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/vecteezy_vibrant-3d-icone-de-un-respectueux-de-la-nature-mise-en_25003634.png" />
+                        <Image url="@img/vecteezy_ev-eletrico-carro-pare-as-cobrando-estacao-ecologia-cortar_26977384.png" />
                      </image>
                   </ImageView>
                </children>
@@ -82,12 +82,24 @@
                   <Image url="@img/reduire-la-fenetre.png" />
                </image>
             </ImageView>
-            <Pane fx:id="paneshow" layoutX="13.0" layoutY="113.0" prefHeight="706.0" prefWidth="1162.0" />
+            <Pane fx:id="paneshow" layoutX="13.0" layoutY="113.0" prefHeight="706.0" prefWidth="1162.0">
+               <children>
+                  <ImageView fitHeight="645.0" fitWidth="891.0" layoutX="195.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/vecteezy_charge-the-electric-car-from-solar-panels_4579009-1.jpg" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="354.0" layoutY="33.0" prefHeight="70.0" prefWidth="466.0" text="Welcome back" textFill="#7bdcb5">
                <font>
                   <Font name="Ebrima Bold" size="48.0" />
                </font>
             </Label>
+            <ImageView fitHeight="92.0" fitWidth="99.0" layoutX="25.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/icon2..png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

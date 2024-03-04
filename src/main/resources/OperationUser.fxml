@@ -19,7 +19,7 @@
     <children>
         <AnchorPane fx:id="coursesDetailsContainer" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1102.0" stylesheets="@coursesMainPage.css">
             <children>
-                <Label alignment="CENTER" layoutX="480.0" layoutY="14.0" styleClass="title-form" stylesheets="@addNewUser.css" text="Your Profile">
+                <Label alignment="CENTER" layoutX="480.0" layoutY="14.0" styleClass="title-form" stylesheets="@addNewUser.css" text="My Profile">
                <font>
                   <Font name="Ebrima Bold" size="14.0" />
                </font></Label>
@@ -166,7 +166,7 @@
                         <Label fx:id="done" layoutX="13.0" layoutY="5.0" styleClass="success-msg" stylesheets="@coursesMainPage.css" text="Done !" />
                     </children>
                 </AnchorPane>
-                <ImageView fx:id="userImgContainer" fitHeight="150.0" fitWidth="165.0" layoutX="899.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="userImgContainer" fitHeight="161.0" fitWidth="176.0" layoutX="895.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true" />
             </children>
         </AnchorPane>
         <AnchorPane fx:id="editanchorpane" prefHeight="650.0" prefWidth="1110.0" styleClass="courses-details-container" stylesheets="@coursesMainPage.css" visible="false">
