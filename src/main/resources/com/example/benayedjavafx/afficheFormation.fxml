@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane fx:id="gridev" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.benayedjavafx.AfficheFormationController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="450.0" minWidth="10.0" prefWidth="220.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="792.0" minWidth="10.0" prefWidth="625.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="188.0" minHeight="0.0" prefHeight="46.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="362.0" minHeight="10.0" prefHeight="348.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00561B;">
+         <children>
+            <Text fill="WHITE" layoutX="25.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Afficher Formation" wrappingWidth="192.208984375">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="362.0" prefWidth="194.0" style="-fx-background-color: #00561B;" GridPane.rowIndex="1">
+         
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00561B;" GridPane.rowIndex="2" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <TableView fx:id="FormationTable" prefHeight="436.0" prefWidth="602.0">
+              <columns>
+                <TableColumn fx:id="ID_formationField" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="DureeField" prefWidth="75.0" text="Duree" />
+                  <TableColumn fx:id="TitreField" prefWidth="75.0" text="Titre" />
+                  <TableColumn fx:id="DescriptionField" prefWidth="75.0" text="Description" />
+                  <TableColumn fx:id="LieuField" prefWidth="75.0" text="Lieu" />
+                  <TableColumn fx:id="FormateurField" prefWidth="75.0" text="Formateur" />
+                  <TableColumn fx:id="DatedebutField" prefWidth="75.0" text="Date debut" />
+                  <TableColumn fx:id="DatefinField" prefWidth="75.0" text="Date fin" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <children>
+            <Button fx:id="supprimerButton" layoutX="201.0" layoutY="45.0" mnemonicParsing="false" onAction="#delete" text="Supprimer" />
+            <Button fx:id="ModifierField" layoutX="112.0" layoutY="45.0" mnemonicParsing="false" onAction="#Edit" text="Modifier" />
+            <Button layoutX="21.0" layoutY="45.0" mnemonicParsing="false" onAction="#Add" text="Ajouter" />
+            <Button layoutX="384.0" layoutY="45.0" mnemonicParsing="false" onAction="#imprimerPDF" text="Imprimer en PDF" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+         <children>
+            <TextField fx:id="rechercheTextField" layoutX="111.0" layoutY="35.0" promptText="Chercher selon le titre" />
+            <Button fx:id="AfficheQuiz" layoutX="461.0" layoutY="47.0" mnemonicParsing="false" onAction="#AfficheQuiz" text="Affiche Quiz" />
+            <Text layoutX="93.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="131.07421875" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>
