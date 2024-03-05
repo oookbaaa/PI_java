@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="827.0" prefWidth="998.0" styleClass="container" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherBorne">
+   <children>
+      <BorderPane prefHeight="550.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <AnchorPane prefHeight="827.0" prefWidth="238.0" BorderPane.alignment="CENTER" />
+         </left>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane fx:id="anchorpaneaff" layoutX="41.0" layoutY="-3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1044.0" styleClass="container" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0">
+                     <children>
+                        <AnchorPane layoutX="7.0" layoutY="95.0" prefHeight="202.0" prefWidth="505.0" stylesheets="@style.css">
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                              <String fx:value="radius" />
+                           </styleClass>
+                           <children>
+                              <ScrollPane layoutX="10.0">
+                                 <content>
+                                    <GridPane fx:id="gridPaneBorne" hgap="1" prefHeight="701.0" prefWidth="1005.0" styleClass="scroll-pane" stylesheets="@style.css" vgap="1">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints />
+                                       </rowConstraints>
+            
+                                                      </GridPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="4.0" prefHeight="93.0" prefWidth="1042.0" styleClass="container" stylesheets="@style.css">
+                           <children>
+                              <Label alignment="CENTER" layoutX="157.0" layoutY="15.0" prefHeight="56.0" prefWidth="275.0" text="AFFICHER BORNES" textFill="#1b1b1b">
+                                 <font>
+                                    <Font name="Cambria" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="postFacebook" fitHeight="43.0" fitWidth="44.0" layoutX="30.0" layoutY="29.0" onMouseClicked="#postFacebook" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Facebook_icon.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Button layoutX="771.0" layoutY="34.0" mnemonicParsing="false" onAction="#newinv" prefHeight="43.0" prefWidth="152.0" styleClass="ajout-btn" stylesheets="@style.css" text="Nouvelle Borne" textFill="#fffefe" />
+                              <Button layoutX="486.0" layoutY="20.0" mnemonicParsing="false" onAction="#goToServices" prefHeight="48.0" prefWidth="175.0" styleClass="menu-btn" stylesheets="@style.css" text="Return">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                        <TextField fx:id="identity_borne" layoutX="359.0" layoutY="458.0" opacity="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

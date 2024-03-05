@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="827.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterIntervention">
+   <children>
+      <AnchorPane prefHeight="100.0" prefWidth="1320.0" styleClass="left-menu-container" stylesheets="@style.css">
+         <children>
+            <Label alignment="CENTER" layoutX="285.0" layoutY="15.0" prefHeight="56.0" prefWidth="751.0" text="AJOUTER INTERVENTION" textFill="WHITE">
+               <font>
+                  <Font name="Cambria" size="41.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Separator layoutX="220.0" layoutY="669.0" prefHeight="5.0" prefWidth="952.0" />
+      <Separator layoutX="853.0" layoutY="173.0" orientation="VERTICAL" prefHeight="461.0" prefWidth="5.0" />
+      <AnchorPane layoutX="913.0" layoutY="172.0" prefHeight="396.0" prefWidth="372.0" stylesheets="@style.css">
+         <children>
+            <ImageView fx:id="ImageView" fitHeight="389.0" fitWidth="372.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+         <styleClass>
+            <String fx:value="white-bg" />
+            <String fx:value="radius" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </AnchorPane>
+      <Button layoutX="1043.0" layoutY="578.0" mnemonicParsing="false" onAction="#ImportButton" prefHeight="59.0" prefWidth="114.0" styleClass="ajout-btn" stylesheets="@style.css" text="Importer" />
+      <ComboBox fx:id="bornes" layoutX="273.0" layoutY="258.0" prefHeight="50.0" prefWidth="360.0" promptText="Bornes" />
+      <TextField fx:id="type" layoutX="274.0" layoutY="329.0" prefHeight="50.0" prefWidth="360.0" promptText="type" />
+      <ComboBox fx:id="emp" layoutX="273.0" layoutY="388.0" prefHeight="50.0" prefWidth="360.0" promptText="employé?" />
+      <DatePicker fx:id="date" layoutX="274.0" layoutY="449.0" prefHeight="50.0" prefWidth="360.0" promptText="Date" />
+      <Button layoutX="405.0" layoutY="550.0" mnemonicParsing="false" onAction="#ajouterIntervention" prefHeight="62.0" prefWidth="124.0" styleClass="ajout-btn" stylesheets="@style.css" text="Ajouter" />
+      <Label layoutX="125.0" layoutY="260.0" text="Borne:">
+         <font>
+            <Font name="Ebrima" size="24.0" />
+         </font></Label>
+      <Label layoutX="125.0" layoutY="331.0" text="Type:">
+         <font>
+            <Font name="Ebrima" size="24.0" />
+         </font></Label>
+      <Label layoutX="123.0" layoutY="390.0" text="Employé:">
+         <font>
+            <Font name="Ebrima" size="24.0" />
+         </font></Label>
+      <Label layoutX="131.0" layoutY="451.0" text="Date:">
+         <font>
+            <Font name="Ebrima" size="24.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

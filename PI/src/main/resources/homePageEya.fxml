@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" styleClass="container" stylesheets="@style/styleEye.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.homePageController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="768.0" prefWidth="221.0" spacing="40.0" styleClass="left-menu-container" stylesheets="@style/styleEye.css">
+         <children>
+            <HBox alignment="CENTER" maxWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" spacing="50.0" styleClass="user-details-container" stylesheets="@style/styleEye.css">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <children>
+                  <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@dark/user-line.png" />
+                     </image>
+                  </ImageView>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="64.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="img-profile-container" width="64.0" />
+               </children>
+            </HBox>
+            <Button fx:id="fournissuerBtn" mnemonicParsing="false" onMouseClicked="#fournisseurBtnClicked" prefHeight="50.0" prefWidth="200.0" styleClass="menu-btn" stylesheets="@style/styleEye.css" text="Fournisseurs" />
+            <Button fx:id="produitBtn" mnemonicParsing="false" onMouseClicked="#produitBtnClicked" prefHeight="50.0" prefWidth="200.0" styleClass="menu-btn" stylesheets="@style/styleEye.css" text="Produits" />
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="244.0" layoutY="11.0" prefHeight="59.0" prefWidth="200.0" spacing="20.0" stylesheets="@style/styleEye.css">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@dark/dashboard-fill.png" />
+               </image>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="global-text" text="Dashboard" />
+         </children>
+      </HBox>
+      <AnchorPane layoutX="630.0" layoutY="21.0" prefHeight="38.0" prefWidth="300.0" styleClass="search-bar" stylesheets="@style/styleEye.css">
+         <children>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="5.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@dark/search-line.png" />
+               </image>
+            </ImageView>
+            <TextField layoutX="43.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="250.0" promptText="Search :" styleClass="search-input" stylesheets="@style/styleEye.css" />
+         </children>
+      </AnchorPane>
+      <Button layoutX="1064.0" layoutY="18.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="38.0" styleClass="setting-btn" stylesheets="@style/styleEye.css" />
+      <AnchorPane fx:id="mainPageContainer" layoutX="244.0" layoutY="78.0" prefHeight="685.0" prefWidth="1030.0" />
+      <Button layoutX="519.0" layoutY="29.0" mnemonicParsing="false" onAction="#generateExcel" text="PDF" />
+      <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="1205.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@dark/settings-3-line.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="Trichoice" layoutX="966.0" layoutY="28.0"  prefWidth="150.0" />
+   </children>
+</AnchorPane>

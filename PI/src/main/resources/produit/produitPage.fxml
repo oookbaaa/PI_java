@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="685.0" prefWidth="1030.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ProduitPageController">
+   <children>
+      <Label layoutX="10.0" layoutY="20.0" styleClass="title-page" stylesheets="@/style/styleEye.css" text="Liste des Produits" />
+      <Button layoutX="810.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#goAjoutPPage" prefHeight="40.0" prefWidth="202.0" styleClass="ajout-btn" stylesheets="@/style/styleEye.css" text="Ajouter un produit" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="26.0" layoutY="109.0" prefHeight="559.0" prefWidth="982.0" stylesheets="@/style/styleEye.css">
+         <content>
+            <VBox fx:id="listContainer" alignment="TOP_CENTER" prefHeight="558.0" prefWidth="983.0" spacing="10.0" styleClass="list-container" stylesheets="@/style/styleEye.css" />
+         </content>
+      </ScrollPane>
+      <AnchorPane fx:id="ajoutPageProduit" prefHeight="685.0" prefWidth="1030.0" styleClass="ajoutFContainer" stylesheets="@/style/styleEye.css">
+         <children>
+            <Button layoutX="913.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#goBackPList" prefHeight="40.0" prefWidth="97.0" styleClass="ajout-btn" stylesheets="@/style/styleEye.css" text="Retour" />
+            <Label layoutX="402.0" layoutY="17.0" styleClass="title-form" stylesheets="@/style/styleEye.css" text="Ajouter Un Produit" />
+            <Label layoutX="302.0" layoutY="117.0" prefHeight="18.0" prefWidth="54.0" styleClass="formulaire-label" stylesheets="@/style/styleEye.css" text="Nom" />
+            <TextField fx:id="nomInput" layoutX="285.0" layoutY="167.0" prefHeight="50.0" prefWidth="459.0" promptText="Entrer Un Nom" styleClass="formulaire-input" stylesheets="@/style/styleEye.css" />
+            <Label layoutX="302.0" layoutY="266.0" prefHeight="35.0" prefWidth="126.0" styleClass="formulaire-label" stylesheets="@/style/styleEye.css" text="Prix" />
+            <TextField fx:id="prixInput" layoutX="285.0" layoutY="316.0" prefHeight="50.0" prefWidth="459.0" promptText="Entrer Prix" styleClass="formulaire-input" stylesheets="@/style/styleEye.css" />
+            <Label layoutX="302.0" layoutY="404.0" prefHeight="35.0" prefWidth="261.0" styleClass="formulaire-label" stylesheets="@/style/styleEye.css" text="Quantité" />
+            <TextField fx:id="quantiteInput" layoutX="285.0" layoutY="454.0" prefHeight="50.0" prefWidth="459.0" promptText="Quantité" styleClass="formulaire-input" stylesheets="@/style/styleEye.css" />
+            <Button fx:id="ajouterProduitBtn" layoutX="608.0" layoutY="546.0" mnemonicParsing="false" onMouseClicked="#ajoutPBtnClicked" prefHeight="40.0" prefWidth="97.0" styleClass="ajout-btn" stylesheets="@/style/styleEye.css" text="Ajouter" />
+            <Label fx:id="errorNamePAjout" layoutX="305.0" layoutY="230.0" prefHeight="26.0" prefWidth="186.0" styleClass="error-label" stylesheets="@/style/styleEye.css" text="Nom est obligatoire" visible="false" />
+            <Label fx:id="errorPrixPAjout" layoutX="304.0" layoutY="377.0" prefHeight="26.0" prefWidth="186.0" styleClass="error-label" stylesheets="@/style/styleEye.css" text="Prix est obligatoire" visible="false" />
+            <Label fx:id="errorQuantitePAjout" layoutX="304.0" layoutY="519.0" prefHeight="26.0" prefWidth="186.0" styleClass="error-label" stylesheets="@/style/styleEye.css" text="Quantité est obligatoire" visible="false" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="editPageProduit" prefHeight="685.0" prefWidth="1030.0" styleClass="ajoutFContainer" stylesheets="@/style/styleEye.css">
+         <children>
+            <Button layoutX="913.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#goBackPList" prefHeight="40.0" prefWidth="97.0" styleClass="ajout-btn" stylesheets="@/style/styleEye.css" text="Retour" />
+            <Label layoutX="402.0" layoutY="17.0" styleClass="title-form" stylesheets="@/style/styleEye.css" text="Modifier Un Produit" />
+            <VBox layoutX="235.0" layoutY="82.0" prefHeight="550.0" prefWidth="567.0" spacing="20.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="54.0" styleClass="formulaire-label" stylesheets="@/style/styleEye.css" text="Nom" />
+                  <TextField fx:id="nomInputEdit" prefHeight="50.0" prefWidth="459.0" promptText="Entrer Un Nom" styleClass="formulaire-input" stylesheets="@/style/styleEye.css" />
+                  <Label fx:id="errorNomPEdit" prefHeight="26.0" prefWidth="186.0" styleClass="error-label" stylesheets="@/style/styleEye.css" text="Nom est obligatoire" visible="false" />
+                  <Label prefHeight="35.0" prefWidth="126.0" styleClass="formulaire-label" stylesheets="@/style/styleEye.css" text="Prix" />
+                  <TextField fx:id="prixInputEdit" prefHeight="50.0" prefWidth="459.0" promptText="Entrer Prix" styleClass="formulaire-input" stylesheets="@/style/styleEye.css" />
+                  <Label fx:id="errorPrixPEdit" prefHeight="26.0" prefWidth="186.0" styleClass="error-label" stylesheets="@/style/styleEye.css" text="Prix est obligatoire" visible="false" />
+                  <Label prefHeight="35.0" prefWidth="261.0" styleClass="formulaire-label" stylesheets="@/style/styleEye.css" text="Quantité" />
+                  <TextField fx:id="quantiteInputEdit" prefHeight="50.0" prefWidth="459.0" promptText="Quantité" styleClass="formulaire-input" stylesheets="@/style/styleEye.css" />
+                  <Label fx:id="errorQuantitePEdit" prefHeight="26.0" prefWidth="186.0" styleClass="error-label" stylesheets="@/style/styleEye.css" text="Quantité est obligatoire" visible="false" />
+                  <Button fx:id="modifierProfuitBtn" mnemonicParsing="false" onMouseClicked="#modifPBtnClicked" prefHeight="40.0" prefWidth="97.0" styleClass="ajout-btn" stylesheets="@/style/styleEye.css" text="Modifier">
+                     <VBox.margin>
+                        <Insets left="450.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

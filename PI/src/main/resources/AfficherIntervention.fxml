@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="827.0" prefWidth="998.0" styleClass="container" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherInterventionREMAKE">
+    <children>
+        <AnchorPane prefHeight="827.0" prefWidth="1320.0" styleClass="container" stylesheets="@style.css">
+            <children>
+            <ImageView fitHeight="69.0" fitWidth="84.0" layoutX="358.0" layoutY="32.0" onMouseClicked="#pdf" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/pdficon.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="1067.0" layoutY="38.0" mnemonicParsing="false" onAction="#newinv" prefHeight="52.0" prefWidth="211.0" styleClass="ajout-btn" stylesheets="@style.css" text="Nouvelle intervention" textFill="#fffefe" />
+            <Button layoutX="888.0" layoutY="40.0" mnemonicParsing="false" onAction="#stats" prefHeight="52.0" prefWidth="151.0" styleClass="ajout-btn" stylesheets="@style.css" text="Stats" textFill="#fffefe" />
+            <ImageView fx:id="postFacebook" fitHeight="62.0" fitWidth="64.0" layoutX="289.0" layoutY="32.0" onMouseClicked="#postFacebook" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Facebook_icon.jpg" />
+               </image>
+            </ImageView>
+                <Button layoutX="447.0" layoutY="39.0" mnemonicParsing="false" onAction="#goToServices" prefHeight="48.0" prefWidth="128.0" styleClass="menu-btn" stylesheets="@style.css" text="return" />
+            </children>
+        </AnchorPane>
+
+        <BorderPane layoutX="267.0" layoutY="133.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="1053.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="267.0" AnchorPane.rightAnchor="0.0">
+            <right>
+                <VBox prefHeight="632.0" prefWidth="1044.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox prefHeight="3.0" prefWidth="432.0" />
+                        <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="1028.0">
+                            <content>
+                                <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="1036.0">
+                                    <children>
+                                        <GridPane fx:id="gridPane" layoutX="6.0" layoutY="8.0" prefHeight="0.0" prefWidth="987.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                        </GridPane>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </VBox>
+            </right>
+        </BorderPane>
+    </children>
+</AnchorPane>
