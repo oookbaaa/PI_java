@@ -1,0 +1,226 @@
+.container{
+    -fx-background-color: #ffffff;
+}
+.left-menu-container{
+    -fx-background-color: #7bdcb5;
+    -fx-border-radius: 24;
+    -fx-background-radius: 24;
+    -fx-border-color: #000000;
+}
+
+.monbouton{
+    -fx-background-color: #2f8783;
+    -fx-border-radius: 24;
+    -fx-background-radius: 24;
+    -fx-border-color: #000000;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 4, 0);
+}
+
+.monbouton:hover{
+    -fx-opacity: 0.6;
+}
+
+.img-profile-container{
+    -fx-arc-height: 32;
+    -fx-arc-width: 32;
+}
+.user-details-container{
+    -fx-background-color: rgba(255, 255, 255, 0.56);
+    -fx-background-radius: 24;
+    -fx-border-radius: 24;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 4, 0);
+}
+.menu-btn{
+    -fx-background-color: rgba(255, 255, 255, 0.56);
+    -fx-border-radius: 24;
+    -fx-background-radius: 24;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 4, 0);
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-style: solid;
+    -fx-border-color: #0FFF50;
+}
+.menu-btn:hover{
+    -fx-opacity: 0.6;
+}
+.global-text{
+    -fx-font-size: 28;
+    -fx-fill: #000000;
+}
+.search-bar{
+    -fx-background-color: #D9D9D9;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #000000;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 4, 0);
+}
+.search-input{
+    -fx-background-color: transparent;
+    -fx-font-family: "Jost Light";
+    -fx-font-size: 16;
+    -fx-text-fill: #000000;
+}
+.setting-btn{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+.setting-btn:hover{
+    -fx-opacity: 0.6;
+}
+.title-page{
+    -fx-font-size: 24;
+    -fx-text-fill: #000000;
+}
+.ajout-btn{
+    -fx-background-color: #7bd159;
+    -fx-border-radius: 24;
+    -fx-background-radius: 24;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 4, 0);
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+.ajout-btn:hover{
+    -fx-opacity: 0.6;
+}
+.scroll-pane{
+    -fx-background-color: #ffffff;
+}
+.scroll-pane .scroll-bar:vertical{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 2px;
+}
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: #7bd159;
+}
+.scroll-pane .scroll-bar:vertical .thumb:hover {
+    -fx-opacity: 0.6;
+}
+.scroll-pane .scroll-bar:vertical .increment-button,
+.scroll-pane .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+}
+.list-container{
+    -fx-background-color: #ffffff;
+}
+.item-container{
+    -fx-background-radius: 24;
+    -fx-border-radius: 24;
+    -fx-background-color: #7bd159;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 4, 0);
+}
+.nom-prenom-fournisseur{
+    -fx-font-family: "Jost Medium";
+    -fx-font-size: 20;
+    -fx-fill: #000000;
+}
+.id-text{
+    -fx-font-family: "Jost Medium";
+    -fx-font-size: 16;
+    -fx-opacity: 0.6;
+    -fx-text-fill: #000000;
+}
+.other-data{
+    -fx-font-family: "Jost";
+    -fx-font-size: 16;
+    -fx-text-fill: #000000;
+}
+.icon-item{
+    -fx-opacity: 0.6;
+}
+.delete-btn{
+    -fx-background-color: red;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+.delete-btn:hover{
+    -fx-opacity: 0.6;
+}
+.edit-btn{
+    -fx-background-color: #7bdcb5;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+.edit-btn:hover{
+    -fx-opacity: 0.6;
+}
+.ajoutFContainer{
+    -fx-background-color: #ffffff;
+}
+.title-form{
+    -fx-font-family: "Jost Medium";
+    -fx-font-size: 24;
+    -fx-fill: #000000;
+}
+.formulaire-label{
+    -fx-font-family: "Jost Medium";
+    -fx-font-size: 24;
+    -fx-fill: #000000;
+}
+.formulaire-input{
+    -fx-background-color: #fff;
+    -fx-border-radius: 6px;
+    -fx-border-color: #999;
+    -fx-background-radius: 6px;
+    -fx-prompt-text-fill: #999;
+    -fx-font-family: "Jost Medium";
+    -fx-font-weight: 600;
+    -fx-font-size: 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 4, 0);
+}
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 2px;
+}
+.combo-box .arrow-button .arrow {
+    -fx-background-color: #7bdcb5;
+    -fx-background-insets: 0;
+}
+.combo-box:hover .arrow-button .arrow {
+    -fx-background-color: #7bdcb5;
+}
+.combo-box .list-cell {
+    -fx-background-color: #ffffff;
+    -fx-padding: 4px;
+    -fx-font-size: 14px;
+}
+.combo-box .list-cell:hover {
+    -fx-background-color: #d4edda;
+}
+.error-label{
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+    -fx-text-fill: red;
+}
+.container{
+    -fx-background-color: #ffffff;
+}
+
+.vbox {
+    -fx-background-color: #7bdcb5;
+}
+
+
+
+.show{
+    -fx-background-color: #7bdcb5;
+    -fx-border-color: #383737;
+    -fx-border-radius: 45;
+    -fx-background-radius: 45;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
