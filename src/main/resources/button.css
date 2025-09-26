@@ -1,0 +1,181 @@
+/*
+.default-button {
+
+    -fx-background-color: #000000;
+    -fx-text-fill: #D5FFDC;
+    -fx-font-weight: BOLD;
+
+}
+.Button{
+    -fx-background-color: transparent;
+    -fx-translate-x: 0;
+
+}
+.hovered-button:hover {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+}
+.second-button:hover {
+    -fx-underline: true ;
+    -fx-font-weight: medium;
+    -fx-text-fill: #D5FFDC;
+    -fx-underline-color: Black ;
+    -fx-translate-x: 1;
+    -fx-transition: translateX 0.5s;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 20, 0.1, 0, 3);
+}
+.button-with-opacity {
+    -fx-opacity: 0.5;
+    -fx-background-color: #D5FFDC;
+}
+.button-with-opacity.text {
+    -fx-opacity: 1.0;
+    -fx-fill: #D5FFDC;
+}
+*/
+.login-button{
+    -fx-background-color: #000000;
+    -fx-text-fill: #D5FFDC;
+    -fx-font-weight: BOLD;
+    -fx-font-family: "Jost Medium";
+    -fx-font-size: 20;
+    -fx-background-radius: 10 10 10 10;
+    -fx-effect: dropshadow(gaussian,rgba(0, 0, 0, 0.3), 3, 0, 0, 0.1);
+}
+.login-button:hover {
+    -fx-background-color: #000000;
+    -fx-text-fill: #D5FFDC;
+    -fx-font-weight: BOLD;
+    -fx-opacity: 0.8;
+    -fx-font-family: "Jost Medium";
+    -fx-font-size: 20;
+    -fx-effect: dropshadow(gaussian,rgba(0, 0, 0, 0.3), 3, 0, 0, 0.1);
+    -fx-background-radius: 10 10 10 10;
+    -fx-cursor: hand;
+}
+.photo-user{
+    -fx-background-color: transparent;
+    -fx-background-image: url("../images/image-line.png");
+    -fx-background-position: center ;
+    -fx-background-size: 30;
+
+    -fx-shape: none;
+
+}
+.photo-user:hover{
+    -fx-arc-height: 10.0;
+    -fx-arc-width: 10.0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
+    -fx-cursor: hand;
+}
+.forget-password{
+    -fx-background-color: transparent;
+    -fx-text-fill: #D5FFDC;
+    -fx-font-size: 24;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
+}
+.forget-password:hover{
+    -fx-underline: true;
+    -fx-underline-color: Black ;
+    -fx-font-size: 24;
+    -fx-text-fill: #D5FFDC;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
+    -fx-cursor: hand;
+}
+.google.button{
+    -fx-background-color: #D5FFDC;
+    -fx-font-family: "Jost Medium";
+    -fx-font-size: 24;
+    -fx-text-fill: #666666;
+    ;
+}
+.google.button:hover{
+    -fx-background-color: #666666;
+    -fx-font-family: "Jost Medium";
+    -fx-font-size: 24;
+    -fx-text-fill: #D5FFDC;
+    -fx-cursor: hand;
+}
+.sign-up-button{
+    -fx-background-color: transparent;
+    -fx-font-family: "Jost light";
+    -fx-font-size: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
+}
+.sign-up-button:hover{
+    -fx-underline: true;
+    -fx-underline-color: Black ;
+    -fx-cursor: hand;
+}
+.custom-rectangle {
+    -fx-fill: #D5FFDC; /* Fill color */
+
+    -fx-stroke-width: 2; /* Stroke width */
+    -fx-arc-width: 100; /* Horizontal corner radius */
+    -fx-arc-height: 100; /* Vertical corner radius */
+    -fx-opacity: 0.3; /* Opacity */
+
+}
+.check-box>.box {
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+}
+
+.check-box>.box>.mark {
+    -fx-background-image: url("../Icons/eye-close-line.png");
+    -fx-background-position: center ;
+-fx-background-size: 13;
+
+    -fx-shape: none;
+}
+
+.check-box:selected>.box>.mark{
+    -fx-background-color: transparent;
+    -fx-background-image: url("../Icons/eye-fill.png");
+}
+.choice-box {
+    -fx-background-color: #D5FFDC; /* Background color */
+    -fx-text-fill: #ECF0F1;       /* Text color */
+    -fx-font-size: 14px;           /* Font size */
+    -fx-border-color: #D5FFDC;     /* Border color */
+    -fx-border-width: 2px;         /* Border width */
+    -fx-padding: 5px;              /* Padding */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
+}
+
+.choice-box:hover {
+    -fx-background-color: #D5FFDC;
+    -fx-opacity: 0.8;/* Hover background color */
+    -fx-cursor: hand;
+}
+
+.choice-box .arrow {
+    -fx-background-color: #000000; /* Arrow color */
+}
+
+.choice-box .button {
+    -fx-background-color: #2980B9; /* Button color */
+}
+
+.choice-box .label {
+    -fx-font-size: 10px;           /* Label font size */
+}
+.Details-button{
+    -fx-background-color: transparent;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
+    -fx-font-family: "Jost Medium";
+    -fx-font-size: 20;
+    -fx-font-scale: bold;
+
+}
+.Details-button:hover{
+    -fx-background-color: transparent;
+    -fx-opacity: 0.8;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
+}
+.glass-effect {
+    -fx-background-color:#D5FFDC;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
+}
