@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.benayedjavafx.EditQuizController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="134.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="466.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="127.0" minHeight="0.0" prefHeight="56.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="289.0" minHeight="10.0" prefHeight="259.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00561B;" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00561B;" GridPane.rowIndex="1" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00561B;" GridPane.rowIndex="2" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+      <AnchorPane prefHeight="196.0" prefWidth="473.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <TextField fx:id="id_quiz" layoutX="124.0" layoutY="26.0" prefHeight="25.0" prefWidth="218.0" promptText="id quiz" />
+            <TextField fx:id="titre" layoutX="124.0" layoutY="58.0" prefHeight="25.0" prefWidth="218.0" promptText="titre" />
+            <TextField fx:id="id_formation" layoutX="124.0" layoutY="94.0" prefHeight="25.0" prefWidth="218.0" promptText="id formation" />
+            <TextField fx:id="Duree" layoutX="124.0" layoutY="130.0" prefHeight="25.0" prefWidth="218.0" promptText="Duree" />
+            <TextField fx:id="nbquestions" layoutX="124.0" layoutY="166.0" prefHeight="25.0" prefWidth="218.0" promptText="nombre de questions" />
+            <Button layoutX="83.0" layoutY="209.0" mnemonicParsing="false" onAction="#Edit_quiz" text="modifier" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+   </children>
+</GridPane>
